@@ -28,25 +28,16 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.collapsible').collapsible();
-            $('select').material_select();
-        });
-
-        $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15, // Creates a dropdown of 15 years to control year,
-            today: 'Today',
-            clear: 'Clear',
-            close: 'Ok',
-            closeOnSelect: false // Close upon selecting a date,
-        });
-    </script>
+<body>
+    {% for recipe in recipes %}
+        {{ recipe.category_name}}
+        {{ recipe.dish_name}}
+        {{ recipe.ingredients}}
+        {{ recipe.preparation_1}}
+        {{ recipe.preparation_2}}
+        {{ recipe.prep_time}}
+        {{ recipe.cook_time}}
+        {{ recipe.author}}
+        {{ recipe.entry_date}}
+    {% endfor %}
 </body>
-
-</html>
