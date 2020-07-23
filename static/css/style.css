@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: Roboto, sans-serif;
+    background-image: url("../images/home-bkgrnd.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
 .btn_small {
     height: 24px;
     width: 60px;
@@ -10,5 +19,5 @@
     margin-top: 5px;
 }
 nav {
-    background-color:#1935a8;
+    background-image: linear-gradient(to bottom right, #0d47a1, #90caf9);
 }
