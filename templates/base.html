@@ -14,12 +14,15 @@
       href="{{url_for('static', filename='css/style.css')}}"
       type="text/css"
     />
+    {% if title %}
     <title>{{ title }} - Recipe Store</title>
+    {% else %}
+    <title> Welcome To The Recipe Store </title>
+    {% endif %}
   </head>
 
   <body>
     <header>
-      <h1>Hi, {{ user.username }}!</h1>
       <nav>
         <div class="nav-wrapper">
           <a href="" class="brand-logo">Recipe Store</a>
@@ -36,12 +39,7 @@
               >
             </li>
             <li>
-              <a href=""
-                ><i class="">refresh</i></a
-              >
-            </li>
-            <li>
-              <a href=""><i class="material-icons">more_vert</i></a>
+              <a href="/login"><i class="material-icons">face</i></a>
             </li>
           </ul>
           <ul class="side-nav" id="mobile-demo">

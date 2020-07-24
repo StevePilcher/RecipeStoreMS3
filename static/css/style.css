@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap');
+
 
 body {
-    font-family: Roboto, sans-serif;
+    font-family: Recursive, sans-serif;
     background-image: url("../images/home-bkgrnd.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100%
 }
 
 .btn_small {
@@ -19,5 +20,24 @@ body {
     margin-top: 5px;
 }
 nav {
-    background-image: linear-gradient(to bottom right, #0d47a1, #90caf9);
+    background-color: transparent;
+    color: black;
+    box-shadow: none;
+}
+
+input[type="text"]:not(.browser-default) {
+    border-bottom: none ;
+
+}
+
+
+@media screen and (max-width: 768px) { 
+
+body {
+    background-image: url("../images/home-bkgrnd-mobile-2.jpg");
+    background-size: 100vw 100vh;
+}
+nav .brand-logo {
+    font-size: 1.5rem;
+}
 }
