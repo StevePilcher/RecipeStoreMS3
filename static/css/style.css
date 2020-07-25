@@ -8,6 +8,8 @@ body {
     background-size: 100%
 }
 
+
+
 .btn_small {
     height: 24px;
     width: 60px;
@@ -25,8 +27,7 @@ nav {
     box-shadow: none;
 }
 
-input[type="text"]:not(.browser-default) {
-    border-bottom: none ;
+
 
 }
 

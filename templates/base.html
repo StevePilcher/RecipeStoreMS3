@@ -14,56 +14,74 @@
       href="{{url_for('static', filename='css/style.css')}}"
       type="text/css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     {% if title %}
     <title>{{ title }} - Recipe Store</title>
     {% else %}
     <title> Welcome To The Recipe Store </title>
     {% endif %}
   </head>
-
   <body>
-    <header>
-      <nav>
-        <div class="nav-wrapper">
-          <a href="" class="brand-logo">Recipe Store</a>
-          <a href="" data-activates="mobile-demo" class="button-collapse"
-            ><i class="material-icons">menu</i></a
-          >
-          <ul class="right hide-on-med-and-down">
-            <li>
-              <a href=""><i class="material-icons">search</i></a>
-            </li>
-            <li>
-              <a href=""
-                ><i class="material-icons">view_module</i></a
-              >
-            </li>
-            <li>
-              <a href="/login"><i class="material-icons">face</i></a>
-            </li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-        <li><a href="">Home</a></li>
-        <li><a href="">My Recipes</a></li>
-        <li><a href="">Edit Recipes</a></li>
-        <li><a href="">Mobile</a></li>
-      </ul>
-        </div>
-      </nav>
-    </header>
-    <div class="container">
-      {% block content %} {% endblock %}
+<section>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ url_for('index') }}"> Recipe Store 
+    </a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('my_recipes') }}">
+        Browse Recipes
+      </a>
+        <a class="navbar-item">
+          More
+        </a>
+      
     </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-success">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-link" href="{{ url_for('login') }}">
+            Log in
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+</section>
+<section id="contents">
+<div class="container">
+{% block content %} {% endblock %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+</section>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
-      $(document).ready(function () {
+    $(document).ready(function () {
         $(".collapsible").collapsible();
         $(".button-collapse").sideNav();
         $("select").material_select();
       });
-
-      $(".datepicker").pickadate({
+    $(".datepicker").pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15, // Creates a dropdown of 15 years to control year,
         today: "Today",
@@ -71,6 +89,11 @@
         close: "Ok",
         closeOnSelect: false, // Close upon selecting a date,
       });
+    $(".navbar-burger").click(function() {
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
+});
+
     </script>
   </body>
 </html>
