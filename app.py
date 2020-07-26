@@ -28,10 +28,10 @@ def index():
 
 @app.route('/my_recipes')
 def my_recipes():
-    user = {'username': 'Tony'}
     return render_template('myrecipes.html',
     recipes=mongo.db.recipes.find(),
-    title='My Recipes', user=user)
+    ingredients=mongo.db.recipes.find({"recipes.ingredients":"1 egg"}),
+    title='My Recipes')
 
 
 @app.route('/login', methods=['GET', 'POST'])

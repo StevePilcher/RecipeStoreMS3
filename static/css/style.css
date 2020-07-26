@@ -3,7 +3,7 @@
 
 body {
     font-family: Recursive, sans-serif;
-    background-image: url("../images/home-bkgrnd.jpg");
+    background-image: url("../images/home-bkgrnd.jpg);
     background-repeat: no-repeat;
     background-size: 100%
 }

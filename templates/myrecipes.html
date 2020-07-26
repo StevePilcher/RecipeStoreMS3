@@ -2,16 +2,51 @@
 
 <body>
 {% block content %}
-    {% for recipe in recipes %}
-        {{ recipe.category_name}}
-        {{ recipe.dish_name}}
-        {{ recipe.ingredients}}
-        {{ recipe.preparation_1}}
-        {{ recipe.preparation_2}}
-        {{ recipe.prep_time}}
-        {{ recipe.cook_time}}
-        {{ recipe.author}}
-        {{ recipe.entry_date}}
-    {% endfor %}
+{% for recipe in recipes %}
+<section>
+	<div class="container is-fluid">
+		<article class="media">
+			<div class="media-left">
+				<p class="image is-64x64">
+					<img src="https://bulma.io/images/placeholders/128x128.png">
+                </p>
+			</div>
+			<div class="media-content">
+				<div class="content">
+					<p>
+						<h4>{{ recipe.category_name }} {{ recipe.dish_name}}</h4> <small><strong>Prep Time:</strong>{{ recipe.prep_time}} </small><small><strong>Cooking Time:</strong>{{ recipe.cook_time}} </small>
+						<br>
+                        {{ recipe.preparation_1}}<br><br>
+                        {{ recipe.preparation_2}}
+                    </p>
+                        
+					<ul> {% for ingredient in ingredients %}
+                        <li> {{ ingredient.ingredient_1 }} </li>
+                        <li> {{ ingredient.ingredient_2 }} </li>
+                        <li> {{ ingredient.ingredient_3 }} </li>
+                        <li> {{ ingredient.ingredient_4 }} </li>
+                        <li> {{ ingredient.ingredient_5 }} </li>
+                        <li> {{ ingredient.ingredient_6 }} </li>
+                        <li> {{ ingredient.ingredient_7 }} </li>
+                        <li> {{ ingredient.ingredient_8 }} </li>
+                        <li> {{ ingredient.ingredient_9 }} </li>
+                    </ul> {% endfor %}
+				</div>
+				<nav class="level is-mobile">
+					<div class="level-left">
+						<p> {{ recipe.author }} </p>
+						<a class="level-item">
+							<span class="icon is-small"><i class="far fa-edit"></i></span>
+						</a>
+						<a class="level-item">
+							<span class="icon is-small"><i class="far fa-trash-alt"></i></span>
+						</a>
+					</div>
+				</nav>
+			</div>
+		</article>
+	</div>
+</section>
+{% endfor %}
 {% endblock %}
 </body>
