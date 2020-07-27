@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+<body>
+  {% block content %}
+  <section class="section container is-fluid">
+    <div class="control has-icons-left">
+      <div class="select is-info">
+        <select class="is-hovered">
+          <option selected>Recipe Category</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Brunch">Brunch</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Baking">Baking</option>
+        </select>
+      </div>
+      <span class="icon is-left">
+        <i class="fas fa-utensils"></i>
+      </span>
+    </div>
+    <br />
+    <div class="field">
+      <div class="label is-normal">
+        <label class="label">Recipe Name</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <input class="input is-info is-hovered" type="text" />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="field is-fullwidth ingredients-list">
+      <div class="label is-normal">
+        <label class="label level-left"
+          >Ingredients List
+          <nav class="level is-mobile" id="add_ingredient_field">
+            <a class="level-item">
+              <span class="icon is-small"
+                ><i class="fas fa-plus-circle" ></i></span>
+            </a>
+          </nav>
+        </label>
+      </div>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control">
+          <input
+            class="input is-info is-hovered"
+            type="text"
+            placeholder="Ingredient Item"
+          />
+        </p>
+      </div>
+    </div>
+    <div class="ingredient-field"></div>
+  </section>
+  {% endblock %}
+</body>
