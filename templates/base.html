@@ -10,87 +10,112 @@
       href="{{url_for('static', filename='css/style.css')}}"
       type="text/css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+
     {% if title %}
     <title>{{ title }} - Recipe Store</title>
     {% else %}
-    <title> Welcome To The Recipe Store </title>
+    <title>Welcome To The Recipe Store</title>
     {% endif %}
   </head>
   <body>
-<section>
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="{{ url_for('index') }}"> Recipe Store 
-    </a>
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-            <a class="navbar-item" href="{{ url_for('my_recipes') }}">
-        Browse Recipes
-      </a>
-        <a class="navbar-item">
-          More
-        </a>
-      
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-success">
-            <strong>Sign up</strong>
+    <section>
+      <nav
+        class="navbar is-info"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a class="navbar-item" href="{{ url_for('index') }}">
+            Recipe Store
           </a>
-          <a class="button is-link" href="{{ url_for('login') }}">
-            Log in
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
           </a>
         </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="{{ url_for('my_recipes') }}">
+              Browse Recipes
+            </a>
+            <a class="navbar-item" href="{{ url_for('create_recipe') }}">
+              Create Recipe
+            </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-success">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-link" href="{{ url_for('login') }}">
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    <section id="contents">
+      <div class="container">
+        {% block content %} {% endblock %} {% with messages =
+        get_flashed_messages() %} {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
       </div>
-    </div>
-  </div>
-</nav>
-</section>
-<section id="contents">
-<div class="container">
-{% block content %} {% endblock %}
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
-</div>
-</section>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-        $(".collapsible").collapsible();
-        $(".button-collapse").sideNav();
-        $("select").material_select();
-      });
-    $(".datepicker").pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15, // Creates a dropdown of 15 years to control year,
-        today: "Today",
-        clear: "Clear",
-        close: "Ok",
-        closeOnSelect: false, // Close upon selecting a date,
-      });
+    </section>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script type="text/javascript">
+    
+    $(document).ready(function() {
+
+    // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
-});
+    });
 
+    var max_fields = 10;
+    var container = $(".ingredient-field");
+    var add_button = $("#add_ingredient_field");
+    var x = 1;
+
+    $(add_button).click(function(e) {
+        e.preventDefault();
+        if (x < max_fields) {
+        x++;
+        $(container).append('<br><div class="field-body is-fullwidth" id="ingredient_'+(x)+'"><div class="field has-addons "><p class="control is-expanded"><input id="ingeredients_'+(x)+'" name="ingredients_'+(x)+'" class="input is-info is-hovered" type="text" placeholder="Ingredient Item '+(x)+'"/></p><div class="control"><button type="submit" class="button is-link delete-ingredient"><i class="far fa-trash-alt "></i></a></button></div><a class="level-item"><div>');
+        //add input box
+        } else {
+        alert('You reached the ingredient limit')
+        }
+
+        $(container).on("click", ".delete-ingredient", function(e) {
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        });
+    });
+});
     </script>
   </body>
 </html>

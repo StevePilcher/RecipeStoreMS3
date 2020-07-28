@@ -8,12 +8,11 @@
         <form method="POST" action="/login">
         {{ form.hidden_tag() }}
             <div class="field">
-                <div class="control">
-                    {{ form.username.label }}{{ form.username(size=32) }}
+                <div class="control is-info">
+                    <input id="{{ form.username.label }}{{ form.username(size=32)}}"class="is-info"/> 
                 </div>
-            </div>
             <div class="field">
-                <div class="control">
+                <div class="control is-info">
                     {{ form.password.label }}{{ form.password(size=32) }}
                 </div>
             </div>

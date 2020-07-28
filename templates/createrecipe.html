@@ -3,60 +3,176 @@
 <body>
   {% block content %}
   <section class="section container is-fluid">
-    <div class="control has-icons-left">
-      <div class="select is-info">
-        <select class="is-hovered">
-          <option selected>Recipe Category</option>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Brunch">Brunch</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-          <option value="Dessert">Dessert</option>
-          <option value="Baking">Baking</option>
-        </select>
-      </div>
-      <span class="icon is-left">
-        <i class="fas fa-utensils"></i>
-      </span>
-    </div>
-    <br />
-    <div class="field">
-      <div class="label is-normal">
-        <label class="label">Recipe Name</label>
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <p class="control">
-            <input class="input is-info is-hovered" type="text" />
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half">
+        <form action="{{url_for('insert_recipe')}}" method="POST">
+          <div class="control has-icons-left">
+            <div class="select is-info">
+              <select class="is-hovered" id="category_name" name="category_name" required>
+                <option selected>Recipe Category</option>
+                {% for cat in categories %}
+                <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div>
+              <span class="icon is-left">
+                <i class="fas fa-utensils"></i>
+              </span>
+            </div>
+            <br />
+          </div>
+          <div class="field">
+            <div class="label is-normal">
+              <label class="label">Recipe Name</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" required/>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field ingredients-list">
+            <div class="label is-normal">
+              <label class="label level-left"
+                >Ingredients List
+                <nav class="level is-mobile" id="add_ingredient_field">
+                  <a class="level-item">
+                    <span class="icon is-small"
+                      ><i class="fas fa-plus-circle"></i
+                    ></span>
+                  </a>
+                </nav>
+              </label>
+            </div>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input id="ingredients" name="ingredients"
+                  class="input is-info is-hovered"
+                  type="text"
+                  placeholder="Ingredient Item" required
+                />
+              </p>
+            </div>
+          </div>
+          <div class="ingredient-field"></div>
+          <div class="field">
+            <div class="label is-normal">
+              <label class="label">Preparation Instructions</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea is-info" placeholder="Info textarea" id="preparation_instructions" name="preparation_instructions" required></textarea>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="label is-normal">
+              <label class="label">Cooking Instructions</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control">
+                  <textarea class="textarea is-info" placeholder="Preparation Instructions" id="cooking_instructions" name="cooking_instructions" required></textarea>
+                </p>
+              </div>
+            </div>
+            <div class="field">
+              <div class="label is-normal">
+                <label class="label">Prep Time </label>
+              </div>
+              <div class="control has-icons-left">
+                <div class="select is-info">
+                  <select class="is-hovered" id="prep_time" name="prep_time" required>
+                    <option selected>Minutes</option>
+                    <option value="5">5 mins</option>
+                    <option value="10">10 mins</option>
+                    <option value="15">15 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="25">25 mins</option>
+                    <option value="30">30 mins</option>
+                    <option value="35">35 mins</option>
+                    <option value="40">40 mins</option>
+                    <option value="45">45 mins</option>
+                    <option value="50">50 mins</option>
+                    <option value="55">55 mins</option>
+                    <option value="60">60 mins</option>
+                    <option value="65">65 mins</option>
+                    <option value="70">70 mins</option>
+                    <option value="75">75 mins</option>
+                    <option value="80">80 mins</option>
+                    <option value="85">85 mins</option>
+                    <option value="90">90 mins</option>
+                    <option value="95">95 mins</option>
+                    <option value="100">100 mins</option>
+                    <option value="105">105 mins</option>
+                    <option value="110">110 mins</option>
+                    <option value="115">115 mins</option>
+                    <option value="120">120 mins</option>
+                  </select>
+                </div>
+                <span class="icon is-left">
+                  <i class="far fa-clock"></i>
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <div class="label is-normal">
+                <label class="label">Cooking Time</label>
+              </div>
+              <div class="control has-icons-left">
+                <div class="select is-info">
+                  <select class="is-hovered" id="cook_time" name="cook_time" required>
+                    <option selected>Minutes</option>
+                    <option value="5">5 mins</option>
+                    <option value="10">10 mins</option>
+                    <option value="15">15 mins</option>
+                    <option value="20">20 mins</option>
+                    <option value="25">25 mins</option>
+                    <option value="30">30 mins</option>
+                    <option value="35">35 mins</option>
+                    <option value="40">40 mins</option>
+                    <option value="45">45 mins</option>
+                    <option value="50">50 mins</option>
+                    <option value="55">55 mins</option>
+                    <option value="60">60 mins</option>
+                    <option value="65">65 mins</option>
+                    <option value="70">70 mins</option>
+                    <option value="75">75 mins</option>
+                    <option value="80">80 mins</option>
+                    <option value="85">85 mins</option>
+                    <option value="90">90 mins</option>
+                    <option value="95">95 mins</option>
+                    <option value="100">100 mins</option>
+                    <option value="105">105 mins</option>
+                    <option value="110">110 mins</option>
+                    <option value="115">115 mins</option>
+                    <option value="120">120 mins</option>
+                  </select>
+                </div>
+                <span class="icon is-left">
+                  <i class="far fa-clock"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="buttons">
+  <button class="button is-link" type="submit" name="action">
+    <span class="icon">
+      <i class="far fa-save"></i>
+    </span>
+    <span>Save</span>
+  </button>
           </p>
-        </div>
+        </form>
       </div>
     </div>
-    <div class="field is-fullwidth ingredients-list">
-      <div class="label is-normal">
-        <label class="label level-left"
-          >Ingredients List
-          <nav class="level is-mobile" id="add_ingredient_field">
-            <a class="level-item">
-              <span class="icon is-small"
-                ><i class="fas fa-plus-circle" ></i></span>
-            </a>
-          </nav>
-        </label>
-      </div>
-    </div>
-    <div class="field-body">
-      <div class="field">
-        <p class="control">
-          <input
-            class="input is-info is-hovered"
-            type="text"
-            placeholder="Ingredient Item"
-          />
-        </p>
-      </div>
-    </div>
-    <div class="ingredient-field"></div>
   </section>
   {% endblock %}
 </body>

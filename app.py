@@ -18,19 +18,30 @@ app.config.from_object(Config)
 
 mongo = PyMongo(app)
 
-
 @app.route('/')
 @app.route('/index')
 def index():
     user = {'username': 'Steve'}
     return render_template('base.html', title='Home', user=user)
 
+@app.route('/create_recipe')
+def create_recipe():
+    user = {'username': 'Steve'}
+    return render_template('createrecipe.html', title='Create Recipe', user=user,
+    categories=mongo.db.categories.find(),
+    )
+
+@app.route('/insert_recipe', methods=['POST','GET'])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    return redirect(url_for('my_recipes'))
+
 
 @app.route('/my_recipes')
 def my_recipes():
     return render_template('myrecipes.html',
     recipes=mongo.db.recipes.find(),
-    ingredients=mongo.db.recipes.find({"recipes.ingredients":"1 egg"}),
     title='My Recipes')
 
 

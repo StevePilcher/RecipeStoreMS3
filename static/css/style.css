@@ -3,12 +3,15 @@
 
 body {
     font-family: Recursive, sans-serif;
-    background-image: url("../images/home-bkgrnd.jpg);
+    background-color: #90caf9;
     background-repeat: no-repeat;
-    background-size: 100%
+    background-size: 100%;
+    
 }
 
-
+#add_ingredient_field {
+    padding:1rem;
+}
 
 .btn_small {
     height: 24px;
@@ -26,7 +29,12 @@ nav {
     color: black;
     box-shadow: none;
 }
-
+.media {
+    background-color: white;
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 25px;
+}
 
 
 }
