@@ -13,9 +13,9 @@
 					<p>
 						<h3>{{ recipe.category_name }}</h3><h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
 						<br><br><h4>Preparation Instructions</h4>
-                        {{ recipe.preparation_instructions}}
+                        {{ recipe.preparation_instructions }}
                         <br><br><h4>Cooking Instructions</h4>
-                        {{ recipe.cooking_instructions}}
+                        {{ recipe.cooking_instructions }}
                     </p>
                     <div><h4>Ingredients</h4>
                     {{recipe.ingredients}}
@@ -24,10 +24,10 @@
 				<nav class="level is-mobile">
 					<div class="level-left">
 						
-						<a class="level-item">
+						<a class="level-item" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
 							<span class="icon is-small"><i class="far fa-edit"></i></span>
 						</a>
-						<a class="level-item">
+						<a class="level-item" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
 							<span class="icon is-small"><i class="far fa-trash-alt"></i></span>
 						</a>
 					</div>

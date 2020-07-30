@@ -4,17 +4,19 @@
   {% block content %}
   <section class="section container is-fluid">
     <div class="columns is-mobile is-centered">
-      
       <div class="column is-half">
-      <h2>Create Recipe</h2>
-      <br>
-        <form action="{{url_for('insert_recipe')}}" method="POST">
+        <h4>Edit Recipe</h4><br>
+        <form action="{{ url_for('update_recipe', recipe_id=recipe.id) }}" method="POST">
           <div class="control has-icons-left">
             <div class="select is-info">
               <select class="is-hovered" id="category_name" name="category_name" required>
-                <option selected>Recipe Category</option>
+                <option>Recipe Category</option>
                 {% for cat in categories %}
+                    {% if cat.category_name == recipe.category_name%}
+                <option value="{{cat.category_name}}" selected>{{cat.category_name}}</option>
+                    {% else %}
                 <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                    {% endif %}
                 {% endfor %}
               </select>
             </div>
@@ -32,7 +34,7 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" required/>
+                  <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" value="{{ recipe.recipe_name}}" required/>
                 </p>
               </div>
             </div>
@@ -57,7 +59,7 @@
                 <input id="ingredients" name="ingredients"
                   class="input is-info is-hovered"
                   type="text"
-                  placeholder="Ingredient Item" required
+                  placeholder="Ingredient Item" value="{{recipe.ingredients}}" required
                 />
               </p>
             </div>
@@ -70,7 +72,8 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea is-info" placeholder="Info textarea" id="preparation_instructions" name="preparation_instructions" required></textarea>
+                  <textarea class="textarea is-info" placeholder="Preparation Instructions" id="preparation_instructions" name="preparation_instructions" required>{{recipe.preparation_instructions }}</textarea>
+                  
                 </p>
               </div>
             </div>
@@ -82,18 +85,19 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea is-info" placeholder="Preparation Instructions" id="cooking_instructions" name="cooking_instructions" required></textarea>
+                  <textarea class="textarea is-info" placeholder="Preparation Instructions" id="cooking_instructions" name="cooking_instructions" required>{{ recipe.cooking_instructions }}</textarea>
+                  
                 </p>
               </div>
             </div>
             <div class="field">
               <div class="label is-normal">
-                <label class="label">Prep Time </label>
+                <label class="label">Prep Time</label>
               </div>
               <div class="control has-icons-left">
                 <div class="select is-info">
                   <select class="is-hovered" id="prep_time" name="prep_time" required>
-                    <option selected>Minutes</option>
+                    <option value="{{recipe.prep_time}}" selected></option>
                     <option value="5">5 mins</option>
                     <option value="10">10 mins</option>
                     <option value="15">15 mins</option>
@@ -132,7 +136,7 @@
               <div class="control has-icons-left">
                 <div class="select is-info">
                   <select class="is-hovered" id="cook_time" name="cook_time" required>
-                    <option selected>Minutes</option>
+                    <option value="{{ recipe.cook_time}}" selected></option>
                     <option value="5">5 mins</option>
                     <option value="10">10 mins</option>
                     <option value="15">15 mins</option>
