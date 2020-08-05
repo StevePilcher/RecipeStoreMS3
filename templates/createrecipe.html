@@ -4,17 +4,23 @@
   {% block content %}
   <section class="section container is-fluid">
     <div class="columns is-mobile is-centered">
-      
       <div class="column is-half">
-      <h2>Create Recipe</h2>
-      <br>
+        <h2>Create Recipe</h2>
+        <br />
         <form action="{{url_for('insert_recipe')}}" method="POST">
           <div class="control has-icons-left">
             <div class="select is-info">
-              <select class="is-hovered" id="category_name" name="category_name" required>
+              <select
+                class="is-hovered"
+                id="category_name"
+                name="category_name"
+                required
+              >
                 <option selected>Recipe Category</option>
                 {% for cat in categories %}
-                <option value="{{cat.category_name}}">{{cat.category_name}}</option>
+                <option value="{{cat.category_name}}"
+                  >{{cat.category_name}}</option
+                >
                 {% endfor %}
               </select>
             </div>
@@ -32,7 +38,13 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" required/>
+                  <input
+                    id="recipe_name"
+                    name="recipe_name"
+                    class="input is-info is-hovered"
+                    type="text"
+                    required
+                  />
                 </p>
               </div>
             </div>
@@ -54,10 +66,13 @@
           <div class="field-body">
             <div class="field">
               <p class="control">
-                <input id="ingredients" name="ingredients"
+                <input
+                  id="ingredients"
+                  name="ingredients"
                   class="input is-info is-hovered"
                   type="text"
-                  placeholder="Ingredient Item" required
+                  placeholder="Ingredient Item"
+                  required
                 />
               </p>
             </div>
@@ -70,7 +85,13 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea is-info" placeholder="Info textarea" id="preparation_instructions" name="preparation_instructions" required></textarea>
+                  <textarea
+                    class="textarea is-info"
+                    placeholder="Info textarea"
+                    id="preparation_instructions"
+                    name="preparation_instructions"
+                    required
+                  ></textarea>
                 </p>
               </div>
             </div>
@@ -82,7 +103,13 @@
             <div class="field-body">
               <div class="field">
                 <p class="control">
-                  <textarea class="textarea is-info" placeholder="Preparation Instructions" id="cooking_instructions" name="cooking_instructions" required></textarea>
+                  <textarea
+                    class="textarea is-info"
+                    placeholder="Preparation Instructions"
+                    id="cooking_instructions"
+                    name="cooking_instructions"
+                    required
+                  ></textarea>
                 </p>
               </div>
             </div>
@@ -92,7 +119,12 @@
               </div>
               <div class="control has-icons-left">
                 <div class="select is-info">
-                  <select class="is-hovered" id="prep_time" name="prep_time" required>
+                  <select
+                    class="is-hovered"
+                    id="prep_time"
+                    name="prep_time"
+                    required
+                  >
                     <option selected>Minutes</option>
                     <option value="5">5 mins</option>
                     <option value="10">10 mins</option>
@@ -131,7 +163,12 @@
               </div>
               <div class="control has-icons-left">
                 <div class="select is-info">
-                  <select class="is-hovered" id="cook_time" name="cook_time" required>
+                  <select
+                    class="is-hovered"
+                    id="cook_time"
+                    name="cook_time"
+                    required
+                  >
                     <option selected>Minutes</option>
                     <option value="5">5 mins</option>
                     <option value="10">10 mins</option>
@@ -164,14 +201,16 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div>            
+            
+          </div><br>
           <p class="buttons">
-  <button class="button is-link" type="submit" name="action">
-    <span class="icon">
-      <i class="far fa-save"></i>
-    </span>
-    <span>Save</span>
-  </button>
+            <button class="button is-link" type="submit" name="action">
+              <span class="icon">
+                <i class="far fa-save"></i>
+              </span>
+              <span>Save</span>
+            </button>
           </p>
         </form>
       </div>

@@ -14,7 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
     />
-
+    
     {% if title %}
     <title>{{ title }} - Recipe Store</title>
     {% else %}
@@ -56,7 +56,7 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-success">
+                <a class="button is-success" href="{{ url_for('signup') }}">
                   <strong>Sign up</strong>
                 </a>
                 <a class="button is-link" href="{{ url_for('login') }}">
