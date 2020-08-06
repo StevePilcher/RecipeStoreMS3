@@ -20,12 +20,12 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-    if 'username' in session:
-        return redirect(url_for('my_recipes', user=['username']))
+    if 'userid' in session:
+        return redirect(url_for('my_recipes', user=['userid']))
 
     return render_template('login.html', title='Home')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     users = mongo.db.users
     login_user = users.find_one({'name': request.form['username']})
@@ -35,6 +35,11 @@ def login():
             return redirect(url_for('index'))
 
     return 'Invalid username/password combination'
+
+@app.route("/logout")
+def logout():
+    session.pop('userid', None)
+    return render_template('login.html', title='Home')
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -76,7 +81,7 @@ def my_recipes():
     if 'userid' in session:
         user_id = session['userid']
         user_recipes = mongo.db.recipes.find({'userid': user_id})
-        return render_template('myrecipes.html', user_recipes=user_recipes, title = 'My Recipes')
+        return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes', )
     
     return render_template('login.html')
 
