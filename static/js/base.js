@@ -4,6 +4,7 @@ $(document).ready(function() {
     $(".navbar-menu").toggleClass("is-active");
 });
 
+/*
 var max_fields = 10;
 var container = $(".ingredient-field");
 var add_button = $("#add_ingredient_field");
@@ -24,6 +25,6 @@ $(add_button).click(function(e) {
             $(this).parent('div').remove();
             x--;
         });
-    });
+    });*/
 });
 

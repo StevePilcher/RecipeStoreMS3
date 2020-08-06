@@ -2,10 +2,10 @@
 
 <body>
   {% block content %}
-  <section class="section container is-fluid">
+  <section class="section container is-fluid has-text-white">
     <div class="columns is-mobile is-centered">
       <div class="column is-half">
-        <h2>Create Recipe</h2>
+        <h1 class="title">Create Recipe</h1>
         <br />
         <form action="{{url_for('insert_recipe')}}" method="POST">
           <div class="control has-icons-left">
@@ -53,13 +53,7 @@
             <div class="label is-normal">
               <label class="label level-left"
                 >Ingredients List
-                <nav class="level is-mobile" id="add_ingredient_field">
-                  <a class="level-item">
-                    <span class="icon is-small"
-                      ><i class="fas fa-plus-circle"></i
-                    ></span>
-                  </a>
-                </nav>
+                
               </label>
             </div>
           </div>
@@ -87,7 +81,7 @@
                 <p class="control">
                   <textarea
                     class="textarea is-info"
-                    placeholder="Info textarea"
+                    placeholder="Preparation Instructions"
                     id="preparation_instructions"
                     name="preparation_instructions"
                     required
@@ -105,7 +99,7 @@
                 <p class="control">
                   <textarea
                     class="textarea is-info"
-                    placeholder="Preparation Instructions"
+                    placeholder="Cooking Instructions"
                     id="cooking_instructions"
                     name="cooking_instructions"
                     required
@@ -159,7 +153,7 @@
             </div>
             <div class="field">
               <div class="label is-normal">
-                <label class="label">Cooking Time</label>
+                <label class="label has-text-white">Cooking Time</label>
               </div>
               <div class="control has-icons-left">
                 <div class="select is-info">
@@ -202,8 +196,7 @@
               </div>
             </div>
           </div>            
-            
-          </div><br>
+          <br>
           <p class="buttons">
             <button class="button is-link" type="submit" name="action">
               <span class="icon">

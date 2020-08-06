@@ -5,38 +5,42 @@
 {% for recipe in recipes %}
 <section>
 	<div class="container is-fluid">
-    <div class="columns is-centered">
-      <div class="column is-half">
-		<article class="media">
-			<div class="media-content">
-				<div class="content">
-					<p>
-						<h3>{{ recipe.category_name }}</h3><h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
-						<br><br><h4>Preparation Instructions</h4>
-                        {{ recipe.preparation_instructions }}
-                        <br><br><h4>Cooking Instructions</h4>
-                        {{ recipe.cooking_instructions }}
-                    </p>
-                    <div><h4>Ingredients</h4>
-                    {{recipe.ingredients}}
-                    </div>
-                </div>
-				<nav class="level is-mobile">
-					<div class="level-left">
-						
-						<a class="level-item" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-							<span class="icon is-small"><i class="far fa-edit"></i></span>
-						</a>
-						<a class="level-item" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
-							<span class="icon is-small"><i class="far fa-trash-alt"></i></span>
-						</a>
-					</div>
-				</nav>
-			</div>
-		</article>
-	</div>
+        <div class="columns is-centered">
+            <div class="column is-half">
+		        <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </p>
+                    </figure>
+		            <div class="media-content">
+			            <div class="content">
+                            <p>
+                            <h3>{{ recipe.category_name }} </h3>
+                            <h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
+                            <br><br><h4>Preparation Instructions</h4>
+                            {{ recipe.preparation_instructions }}
+                            <br><br><h4>Cooking Instructions</h4>
+                            {{ recipe.cooking_instructions }}
+                            </p>
+                            <h4>Ingredients</h4>
+                            {{recipe.ingredients}}
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                            <a class="level-item" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
+                            <span class="icon is-small"><i class="far fa-edit"></i></span>
+                            </a>
+                            <a class="level-item" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
+                            <span class="icon is-small"><i class="far fa-trash-alt"></i></span>
+                            </a>
+                            </div>
+                        </nav>
+		            </div>
+		        </article>
+	        </div>
+        </div>
     </div>
-	</div>
 </section>
 {% endfor %}
 {% endblock %}

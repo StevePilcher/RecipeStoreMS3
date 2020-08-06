@@ -1,10 +1,9 @@
 import os
+import bcrypt
 from flask import Flask, render_template, redirect, request, session, url_for, flash, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
-import bcrypt
 from bson.objectid import ObjectId
-from config import Config
 from flask_wtf import FlaskForm
 from forms import LoginForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
@@ -16,21 +15,20 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'recipe_manager'
 app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster.djr3q.mongodb.net/recipe_manager?retryWrites=true&w=majority'
-app.config.from_object(Config)
 
 mongo = PyMongo(app)
 
 @app.route('/')
 def index():
     if 'username' in session:
-        return 'You are logged in as ' + session ['username']
+        return redirect(url_for('my_recipes', user=['username']))
+
     return render_template('login.html', title='Home')
 
 @app.route('/login', methods=['POST'])
 def login():
     users = mongo.db.users
-    login_user = users.find_one({'name' : request.form['username']})
-
+    login_user = users.find_one({'name': request.form['username']})
     if login_user:
         if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
@@ -38,12 +36,11 @@ def login():
 
     return 'Invalid username/password combination'
 
-
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     if request.method == 'POST':
         users = mongo.db.users
-        existing_user = users.find_one({'name' : request.form['username']})
+        existing_user = users.find_one({'name': request.form['username']})
 
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
@@ -74,9 +71,10 @@ def delete_recipe(recipe_id):
 
 @app.route('/my_recipes')
 def my_recipes():
-    return render_template('myrecipes.html',
-    recipes=mongo.db.recipes.find(),
-    title='My Recipes')
+        username = session['username']
+        user_recipes= mongo.db.recipes.find({'username': username})
+        
+        return render_template('myrecipes.html', user_recipes=user_recipes, title='My Recipes')
 
 
 @app.route('/edit_recipe/<recipe_id>')
