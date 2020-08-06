@@ -31,7 +31,7 @@ def login():
     login_user = users.find_one({'name': request.form['username']})
     if login_user:
         if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']) == login_user['password']:
-            session['username'] = request.form['username']
+            session['userid'] = str(login_user['_id'])
             return redirect(url_for('index'))
 
     return 'Invalid username/password combination'
@@ -55,13 +55,15 @@ def signup():
 @app.route('/create_recipe')
 def create_recipe():
     return render_template('createrecipe.html', title='Create Recipe',
-    categories=mongo.db.categories.find(),
-    )
+    categories=mongo.db.categories.find())
 
 @app.route('/insert_recipe', methods=['POST','GET'])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    user_id = session['userid']
+    group_recipe = request.form.to_dict()
+    group_recipe['userid'] = user_id
+    group_recipe = recipes.insert_one(group_recipe)
     return redirect(url_for('my_recipes'))
 
 @app.route('/delete_recipe/<recipe_id>')
@@ -71,17 +73,19 @@ def delete_recipe(recipe_id):
 
 @app.route('/my_recipes')
 def my_recipes():
-        username = session['username']
-        user_recipes= mongo.db.recipes.find({'username': username})
-        
-        return render_template('myrecipes.html', user_recipes=user_recipes, title='My Recipes')
+    if 'userid' in session:
+        user_id = session['userid']
+        user_recipes = mongo.db.recipes.find({'userid': user_id})
+        return render_template('myrecipes.html', user_recipes=user_recipes, title = 'My Recipes')
+    
+    return render_template('login.html')
 
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = mongo.db.categories.find()
-    return render_template('editrecipe.html', recipe=the_recipe, categories=categories)
+    return render_template('editrecipe.html', recipe=the_recipe, categories = categories)
 
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
