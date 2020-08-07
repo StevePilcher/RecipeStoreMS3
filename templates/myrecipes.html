@@ -6,17 +6,17 @@
 <section>
 	<div class="container is-fluid">
         <div class="columns is-centered">
-            <div class="column is-half">
+            <div class="column is-two-fifths">
 		        <article class="media">
                     <figure class="media-left">
                         <p class="image is-64x64">
-                            <img src="https://bulma.io/images/placeholders/128x128.png">
+                            <span class="category_icon">{{ recipe.category_name }}</span>
                         </p>
                     </figure>
 		            <div class="media-content">
 			            <div class="content">
                             <p>
-                            <h3>{{ recipe.category_name }} </h3>
+                            <h3 class="categoryname">{{ recipe.category_name }}</h3>
                             <h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
                             <br><br><h4>Preparation Instructions</h4>
                             {{ recipe.preparation_instructions }}

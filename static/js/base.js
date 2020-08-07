@@ -4,6 +4,51 @@ $(document).ready(function() {
     $(".navbar-menu").toggleClass("is-active");
 });
 
+
+/* Change category Icon for retrieved recipe
+$( ".categoryname" ).each(function( index ) {
+  console.log($( this ).text());
+});
+
+//for(var i=0; i<category.each; i++){
+//    console.log(i)
+//}
+*/
+$(".category_icon").each(function(index) {
+    if ($(this).html() == "Breakfast") {
+            $(this).replaceWith('<img class="recipecat" src="./static/images/breakfast.png"></img>');
+        } else if ($('.category_icon').html() == "Lunch") {
+            $(this).replaceWith('<img class="recipecat" src="./static/images/lunch.png"></img>');
+        } else if ($('.category_icon').html() == "Dinner") {
+            $(this).replaceWith('<img class="recipecat" src="./static/images/dinner.png"></img>');
+        } else if ($('.category_icon').html() == "Brunch") {
+            $(this).replaceWith('<img class="recipecat" src="./static/images/brunch.png"></img>');
+        } else if ($('.category_icon').html() == "Dessert") {
+            $(this).replaceWith('<img class="recipecat" src="./static/images/dessert.png"></img>');
+        } else {
+            $('.category_icon').replaceWith('<img class="recipecat" src="./static/images/baking.png"></img>');
+    }
+});
+
+
+//console.log($('.category_icon').html())
+
+/*
+$('#categoryname').each(function(i, category) {
+    if (category == "Breakfast") {
+            $('#recipecat').attr('src' , 'static/images/breakfast.png');
+        } else if (category == "Lunch") {
+            $('#recipecat').attr('src' , 'static/images/lunch.png');
+        } else if (category == "Dinner") {
+            $('#recipecat').attr('src' , 'static/images/dinner.png');
+        } else if (category == "Brunch") {
+            $('#recipecat').attr('src' , 'static/images/brunch.png');
+        } else if (category == "Dessert") {
+            $('#recipecat').attr('src' , 'static/images/dessert.png');
+        } else {
+            $('#recipecat').attr('src' , 'static/images/baking.png');
+        console.log(category);}});
+
 /*
 var max_fields = 10;
 var container = $(".ingredient-field");

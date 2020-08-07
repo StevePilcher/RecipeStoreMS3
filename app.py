@@ -59,8 +59,11 @@ def signup():
 
 @app.route('/create_recipe')
 def create_recipe():
-    return render_template('createrecipe.html', title='Create Recipe',
-    categories=mongo.db.categories.find())
+    if 'userid' in session:
+        return render_template('createrecipe.html', title='Create Recipe',
+        categories=mongo.db.categories.find())
+        
+    return render_template('login.html')
 
 @app.route('/insert_recipe', methods=['POST','GET'])
 def insert_recipe():
