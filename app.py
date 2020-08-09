@@ -34,7 +34,7 @@ def login():
             session['userid'] = str(login_user['_id'])
             return redirect(url_for('index'))
 
-    return 'Invalid username/password combination'
+    return render_template('login.html', title='Home')
 
 @app.route("/logout")
 def logout():
@@ -51,7 +51,7 @@ def signup():
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
-            return redirect(url_for('index'))
+            return redirect(url_for('signup'))
 
         return 'That username already exists!'
 
@@ -59,10 +59,9 @@ def signup():
 
 @app.route('/create_recipe')
 def create_recipe():
+    user_id = session['userid']
     if 'userid' in session:
-        return render_template('createrecipe.html', title='Create Recipe',
-        categories=mongo.db.categories.find())
-        
+        return render_template('createrecipe.html', title='Create Recipe', user_id=user_id, categories=mongo.db.categories.find())
     return render_template('login.html')
 
 @app.route('/insert_recipe', methods=['POST','GET'])
@@ -81,13 +80,15 @@ def delete_recipe(recipe_id):
 
 @app.route('/my_recipes')
 def my_recipes():
-    if 'userid' in session:
-        user_id = session['userid']
-        user_recipes = mongo.db.recipes.find({'userid': user_id})
-        return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes', )
-    
-    return render_template('login.html')
+    user_id = session['userid']
+    if 'userid' in session is None:
+        return render_template('login.html')
 
+    user_recipes = mongo.db.recipes.find({'userid': user_id})
+    if user_recipes is None:
+        return render_template('createrecipe.html')
+
+    return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -99,6 +100,7 @@ def edit_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
+    user_id = session['userid']
     recipes.update({'_id': ObjectId(recipe_id)},
     {
         'category_name':request.form.get('category_name'),
@@ -107,7 +109,9 @@ def update_recipe(recipe_id):
         'preparation_instructions':request.form.get('preparation_instructions'),
         'cooking_instructions':request.form.get('cooking_instructions'),
         'prep_time':request.form.get('prep_time'),
-        'cook_time':request.form.get('cook_time')
+        'cook_time':request.form.get('cook_time'),
+        'userid':user_id,
+
     })
     return redirect(url_for('my_recipes'))
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="bg">
   <head>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -21,6 +21,7 @@
     {% endif %}
   </head>
   <body>
+    <div class="bg">
     <section>
       <nav
         class="navbar is-info"
@@ -31,6 +32,7 @@
           <a class="navbar-item" href="{{ url_for('index') }}">
             Recipe Store
           </a>
+          {% if user_id %}
           <a
             role="button"
             class="navbar-burger burger"
@@ -45,12 +47,10 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="{{ url_for('my_recipes') }}">
-              Browse Recipes
-            </a>
             <a class="navbar-item" href="{{ url_for('create_recipe') }}">
               Create Recipe
             </a>
+            {% endif %}
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -73,11 +73,13 @@
         </div>
       </nav>
     </section>
+    
     <section id="contents">
       
         {% block content %} {% endblock %}
       
     </section>
+    </div>
     <script
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
@@ -89,4 +91,8 @@
       type="text/javascript"
     ></script>
   </body>
+  <footer>
+
+  
+  </footer>
 </html>

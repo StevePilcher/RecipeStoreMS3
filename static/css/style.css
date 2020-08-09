@@ -3,7 +3,15 @@
 
 html {
     font-family: Recursive, sans-serif;
-    background-color: grey;
+    height: 100%;
+}
+
+.bg {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,1) 19%, rgba(0,112,255,1) 100%); 
+
+  /* Full height */
+    height: 100%;
 }
 
 
