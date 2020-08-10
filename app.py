@@ -34,7 +34,7 @@ def login():
             session['userid'] = str(login_user['_id'])
             return redirect(url_for('index'))
 
-    return render_template('login.html', title='Home')
+    return render_template('login.html', message=flash('The username {} does not exist!'.format(request.form["username"], title='Home')))
 
 @app.route("/logout")
 def logout():
@@ -51,7 +51,8 @@ def signup():
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
-            return redirect(url_for('signup'))
+            user_id = session['userid']
+            return redirect(url_for('create_recipe'))
 
         return render_template('signup.html', message=flash('The username {} already exists!'.format(request.form["username"])))
 
