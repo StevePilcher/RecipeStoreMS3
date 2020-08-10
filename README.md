@@ -1,30 +1,35 @@
 # The Recipe Store -  Milestone 3 Project
 
-![Site Image](https://github.com/StevePilcher/Stuck-in-the-mud-MS2/blob/master/assets/images/site-image.PNG)
+![Site Image](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/static/images/site-image.PNG)
 
-This project was created for my Milestone 2 project for the Code Institute's Full Stack Dev course. The project requirements were to build a interactive frontend website using HTML, CSS and Javascript. 
 
-The website I created is a single page site that is designed for desktop. I chose to make this site to showcase Javascript as a traditional dice playing game called stuck in the mud. 
+This project was created for my Milestone 3 project for the Code Institute's Full Stack Dev course. The project requirements were to build a MongoDB-backed Flask project for a web application that allows users to store and manipulate data records about a particular domain using HTML, CSS, JavaScript, Python+Flask and MongoDB.
+
+The webapp I created is a single page site. I chose to create an online recipe site which allows a user to be able to have an individual account for creating, editing and storing recipes.  
 
 ## UX
  
-The UX is a simple single page with areas cleary defined. The player scores are left and right with the dice being rolled and displayed in the centre of the page. The user transitions through the game by using 2 simple buttons and is signposted with modal popups when significant moments in the game occur. Active classes are added when the player turn switches between players to help identify who is active at each given round of the game.
-
+The UX is a simple single page. A standard navbar which concatenates to a burger icon when in mobile view allows users to recognise the simple nav structure. The 'log in' & 'Sign Up' buttons are only visible when the user isn't logged in, otherwise a 'Log Out' button replaces them. The recipes are displayed vertically down the centre of the site once retrieved from MongoDB. 
 
 ### Typical User Stories
 
-**New Players**
+**New Cooks**
 
-- Players arrive at the site and on loading get a welcome message and an instruction that they need to click new game to be able to start playing.
+- Aspiring cooks arrive at the site and will be welcomed with the login screen. This login form also has a note for non registered users to 'sign up!' by clicking the link. 
 
-- Once the new game button is clicked the rules of the game popup as a modal. The rules are set out clearly for the new player to understand and start playing.
+- Once the new cook has signed up, because they are yet to have created a recipe to view they will be taken to the create recipe page. 
+
+- The create recipe page is a simple form where all of the required fields have a heading explaining what is required to be entered. Once all of the data has been entered the user clicks the save button, which is also recognisable by the disk icon. 
+
+**Existing Cooks**
+
 
 
 ### Wireframe
 
 The linked file to the wireframe mockup of the website.
 
-[Wireframe PDF](https://github.com/StevePilcher/Stuck-in-the-mud-MS2/blob/master/assets/WireframeMS2.pdf)
+[Wireframe PDF](https://github.com/StevePilcher/RecipeStoreMS2/blob/master/assets/WireframeMS3.pdf) 
 
 
 ## Features
@@ -51,8 +56,10 @@ The following technologies were used;
 
 - HTML5 
 - CSS3
-- Bootstrap (with integrated Javascript)
+- Bulma (with integrated Javascript)
 - JQUERY (for easier DOM manipulation)
+- Python+Flask
+- MongoDB
 
 ## Testing
 
