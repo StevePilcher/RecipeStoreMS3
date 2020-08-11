@@ -1,6 +1,6 @@
 # The Recipe Store -  Milestone 3 Project
 
-![Site Image](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/static/images/site-image.PNG)
+![Site Image](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/static/images/site-image.png)
 
 
 This project was created for my Milestone 3 project for the Code Institute's Full Stack Dev course. The project requirements were to build a MongoDB-backed Flask project for a web application that allows users to store and manipulate data records about a particular domain using HTML, CSS, JavaScript, Python+Flask and MongoDB.
