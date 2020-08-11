@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+<body>
+{% block content %}
+
+
+<section class="section container is-fluid">
+    <div class="columns is-mobile is-centered">
+      <div class="columns is-two-thirds">
+        <form action="{{url_for('search')}}">
+            <button class="button is-large" type="submit" name="submit_button" value="Breakfast" >
+                <span class="icon is-medium">
+                <img src="./static/images/breakfast.png">
+                </span>
+                <span>Breakfast</span>
+            </button>
+            <button class="button is-large" type="submit" name="submit_button" value="Lunch">
+                <span class="icon is-medium">
+                <img src="./static/images/lunch.png">
+                </span>
+                <span>Lunch</span>
+            </button>
+            <button class="button is-large" type="submit" name="submit_button" value="Dinner">
+                <span class="icon is-medium">
+                <img src="./static/images/dinner.png">
+                </span>
+                <span>Dinner</span>
+            </button>
+            <button class="button is-large" type="submit" name="submit_button" value="Brunch">
+                <span class="icon is-medium">
+                <img src="./static/images/brunch.png">
+                </span>
+                <span>Brunch</span>
+            </button>
+            <button class="button is-large" type="submit" name="submit_button" value="Baking">
+            <span class="icon is-medium">
+                <img src="./static/images/baking.png">
+                </span>
+                <span>Baking</span>
+            </button>
+            <button class="button is-large" type="submit" name="submit_button" value="Dessert">
+                <span class="icon is-medium">
+                <img src="./static/images/dessert.png">
+                </span>
+                <span>Dessert</span>
+            </button>
+        </form>
+      </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+  {% endblock %}
+</body>

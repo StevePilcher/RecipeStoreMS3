@@ -116,6 +116,18 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('my_recipes'))
 
+@app.route('/categories')
+def categories():
+    user_id = session['userid']
+    return render_template('search.html', user_id = user_id)
+
+@app.route('/search')
+def search():
+    user_id = session['userid']
+    category_name = request.values.get('submit_button')
+    user_recipes = mongo.db.recipes.find({'userid': user_id,'category_name': category_name})
+    return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
+
 if __name__ == '__main__':
     app.secret_key= 'mysecret'
     app.run(host=os.environ.get('IP'),
