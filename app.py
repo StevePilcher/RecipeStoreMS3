@@ -112,7 +112,6 @@ def update_recipe(recipe_id):
         'prep_time':request.form.get('prep_time'),
         'cook_time':request.form.get('cook_time'),
         'userid':user_id,
-
     })
     return redirect(url_for('my_recipes'))
 
@@ -133,5 +132,3 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
     port=int(os.environ.get('PORT')),
     debug=True)
-
-
