@@ -1,4 +1,4 @@
-//Nav bar init
+//Nav bar init and toggle for burger icon in mobile:
 
 $(document).ready(function() {
     $(".navbar-burger").click(function() {

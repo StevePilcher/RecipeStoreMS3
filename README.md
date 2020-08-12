@@ -60,7 +60,7 @@ The linked file to the wireframe mockup of the website.
 
 ### Features Left to Implement
 
-1. Keyword search - Search bar that allows for individual recipes to be searched with any keyword rather than by category. 
+1. Keyword search - Search bar that allows for individual recipes to be searched with any keyword rather than by category. Potential across all users recipes depending on GDPR. 
 
 2. Images attachments - all image attachments to be store with recipes. 
 
@@ -147,7 +147,7 @@ This project was deployed using Heroku and can found [here](https://recipestorem
 
 ### Media
 
-- Category Icons can be found at (https://www.flaticon.com/)
+- Category Icons can be found at [Flat Icon](https://www.flaticon.com/)
 
 ### Acknowledgements
 - Additional Flask learning from Pretty Printed's YouTube video 'Creating a User Login System Using Python, Flask and MongoDB [YouTube](https://www.youtube.com/watch?v=vVx1737auSE)

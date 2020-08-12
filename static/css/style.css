@@ -1,38 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap');
 
-
+/* Background Colours */ 
 html {
     font-family: Recursive, sans-serif;
     height: 100%;
+    background: rgb(43, 35, 204);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,1) 19%, rgba(32,156,238,1) 90%); 
 }
-
-.bg {
-       background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,68,121,1) 19%, rgba(32,156,238,1) 90%); 
-
-}
-
+/* Space the title below the nav bar */ 
 .title {
 color: azure;
-margin-top: 2rem;
+margin-top: 3rem;
 }
 
 .label {
     color: azure;
 }
 
-#add_ingredient_field {
-    padding:1rem;
-}
 
-.btn_small {
+/* .btn_small {
     height: 24px;
     width: 60px;
     line-height: 24px;
     margin:5px 5px;
     padding: 0 0.5em;
 }
-
+*/ 
 .task_header {
     margin-top: 5px;
 }
@@ -41,6 +34,9 @@ nav {
     color: black;
     box-shadow: none;
 }
+
+/* Alignment of recipes displayed in Media Content */
+
 .media {
     background-color: white;
     padding: 1em;
@@ -55,3 +51,16 @@ nav {
     margin: 0;
 }
 
+/* alignment of category search buttons */
+
+.buttons {
+    justify-content: center;
+    
+}
+.buttons .button:not(:last-child):not(.is-fullwidth) {
+    margin-right: 2px;
+}
+
+.category-button {
+    min-width: 166px;
+}

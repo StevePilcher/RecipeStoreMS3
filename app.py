@@ -5,9 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
-from forms import LoginForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
 
 
 app = Flask(__name__)
@@ -22,7 +19,6 @@ mongo = PyMongo(app)
 def index():
     if 'userid' in session:
         return redirect(url_for('my_recipes', user=['userid']))
-
     return render_template('login.html', title='Home')
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -125,7 +121,7 @@ def search():
     user_id = session['userid']
     category_name = request.values.get('submit_button')
     user_recipes = mongo.db.recipes.find({'userid': user_id,'category_name': category_name})
-    return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
+    return render_template('search.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
 
 if __name__ == '__main__':
     app.secret_key= 'mysecret'
