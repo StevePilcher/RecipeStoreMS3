@@ -16,11 +16,12 @@
         {% else %}
         <title>Welcome To The Recipe Store</title>
         {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <section id="NavBar">
             <div class="navbar-fixed ">
-                <nav class="blue lighten-1">
+                <nav class="top-nav blue lighten-1">
                     <div class="nav-wrapper">
                     <a href="{{ url_for('index') }}" class="brand-logo" >Recipe Store</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>

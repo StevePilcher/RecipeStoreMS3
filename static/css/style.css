@@ -3,10 +3,9 @@
 /* Background Colours */
 html {
     font-family: Recursive, sans-serif;
-    background-repeat: fixed;
+    background-repeat: no-repeat;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(17, 99, 172) 19%, rgba(32,156,238,1) 90%); 
 }
-
 
 h1 {
     text-align: center;
@@ -30,11 +29,7 @@ form {
 .task_header {
     margin-top: 5px;
 }
-nav {
-    background-color: transparent;
-    color: black;
-    box-shadow: none;
-}
+
 /* Alignment of recipes displayed in Media Content */
 
 .media {
@@ -90,8 +85,3 @@ nav {
 
 /* Media Query */ 
 
-@media only screen and (max-width: 769px) {
-  body {
-      
-}
-}
