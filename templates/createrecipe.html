@@ -1,124 +1,84 @@
 {% extends 'base.html' %}
-<body>
-    {% block content %}
-    <section class="section container is-fluid has-text-white">
-        <div class="columns is-mobile is-centered">
-            <div class="column is-half">
-                <h1 class="title">Create Recipe</h1>
-                <br>
-                <!-- Create Recipe Form with action for recipe insertion-->
-                <form action="{{url_for('insert_recipe')}}" method="POST">
-                    <div class="control has-icons-left">
-                        <div class="select is-info">
-                            <select
-                            class="is-hovered"
-                            id="category_name"
-                            name="category_name"
-                            required>
-                            <!-- Loop through all the category fields on Mongo and display in a dropdown list -->
-                            <option selected>Recipe Category</option>
-                            {% for cat in categories %}
-                            <option value="{{cat.category_name}}">{{cat.category_name}}</option>
-                            {% endfor %}
-                            </select>
-                        </div>
-                        <div>
-                            <span class="icon is-left">
-                            <i class="fas fa-utensils"></i>
-                            </span>
-                        </div>
-                        <br>
-                    </div>
-                    <!-- Recipe Name Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Recipe Name</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <input
-                                id="recipe_name"
-                                name="recipe_name"
-                                class="input is-info is-hovered"
-                                type="text"
-                                required
-                                />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Recipe Ingredient Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label level-left">Ingredients List
-                            </label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <input
-                                id="ingredients"
-                                name="ingredients"
-                                class="input is-info is-hovered"
-                                type="text"
-                                placeholder="Ingredient Item"
-                                required/>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Prep Instruction Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Preparation Instructions</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <textarea
-                                class="textarea is-info"
-                                placeholder="Preparation Instructions"
-                                id="preparation_instructions"
-                                name="preparation_instructions"
-                                required>
-                                </textarea>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cooking Instruction Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Cooking Instructions</label>
-                        </div>
-                        <div class="field-body">
-                        <div class="field">
-                            <p class="control">
-                            <textarea
-                                class="textarea is-info"
-                                placeholder="Cooking Instructions"
-                                id="cooking_instructions"
-                                name="cooking_instructions"
-                                required
-                            ></textarea>
-                            </p>
-                        </div>
-                    </div>
-                    </div>
-                    <!-- Timing Field Dropdowns -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Prep Time </label>
-                        </div>
-                    <div class="control has-icons-left">
-                        <div class="select is-info">
+{% block content %}
+    <section class="container">
+    <h1 class="title">Create Recipe</h1>
+        <div class="row">
+<!-- Create Recipe Form with action for recipe insertion-->
+            <form class="col s12" action="{{url_for('insert_recipe')}}" method="POST">
+                <div class="row">
+                    <div class="input-field col s6">
                         <select
-                        class="is-hovered"
-                        id="prep_time"
-                        name="prep_time"
+                        id="category_name" 
+                        name="category_name" 
                         required>
-                            <option selected>Minutes</option>
+<!-- Display category fields on Mongo and display in a dropdown list -->        
+                        <option selected>Recipe Category</option>
+                        {% for cat in categories %}
+                        <option value="{{cat.category_name}}">
+                            {{cat.category_name}}
+                        </option>
+                        {% endfor %}
+                        </select>
+                        <label for="category_name">Category Select</label>
+                    </div>
+<!-- Recipe Name Field -->
+                    <div class="input-field col s6">
+                        <input 
+                        placeholder="Recipe Name" 
+                        id="recipe_name" 
+                        type="text" 
+                        name="recipe_name" 
+                        class="validate">
+                        <label for="recipe_name">Recipe Name</label>
+                    </div>
+                </div>
+<!-- Recipe Ingredient Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input 
+                        id="ingredients" 
+                        name="ingredients" 
+                        class="input is-info is-hovered" 
+                        type="text" 
+                        placeholder="Ingredient Item" 
+                        required/>
+                        <label for="ingredients">Ingredients</label>
+                    </div>
+                </div>
+<!-- Prep Instruction Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea 
+                        id="preptextarea" 
+                        class="materialize-textarea"
+                        id="preparation_instructions"
+                        name="preparation_instructions"
+                        placeholder="Prepartion Instructions" 
+                        required >
+                        </textarea>
+                        <label for="preptextarea">Prepartion Instructions</label>
+                    </div>
+                </div>
+<!-- Cooking Instruction Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea
+                        id="cooktextarea" 
+                        class="materialize-textarea"
+                        id="cooking_instructions" 
+                        name="cooking_instructions"
+                        placeholder="Cooking Instructions"
+                        required>
+                        </textarea>
+                        <label for="cooktextarea">Cooking Instructions</label>
+                    </div>
+                </div>
+<!-- Timing Field Dropdowns -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="prep_time"
+                        name="prep_time" required>
+                            <option disabled selected>Minutes</option>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>
@@ -144,25 +104,12 @@
                             <option value="115">115 mins</option>
                             <option value="120">120 mins</option>
                         </select>
+                        <label>Prep Time</label>
                     </div>
-                    <span class="icon is-left">
-                    <i class="far fa-clock"></i>
-                    </span>
-                </div>
-                
-                <!-- Cooking Time Field -->
-                <div class="field">
-                    <div class="label is-normal">
-                        <label class="label has-text-white">Cooking Time</label>
-                    </div>
-                    <div class="control has-icons-left">
-                        <div class="select is-info">
-                        <select
-                        class="is-hovered"
-                        id="cook_time"
-                        name="cook_time"
-                        required>
-                            <option selected>Minutes</option>
+                    <div class="input-field col s6">
+                        <select id="cook_time"
+                        name="cook_time" required>
+                            <option disabled selected>Minutes</option>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>
@@ -188,25 +135,16 @@
                             <option value="115">115 mins</option>
                             <option value="120">120 mins</option>
                         </select>
+                        <label>Cooking Time</label>
                     </div>
-                    <span class="icon is-left">
-                    <i class="far fa-clock"></i>
-                    </span>
                 </div>
-                </div>
-                    </div>            
-                    <br>
-                    <p class="buttons">
-                    <button class="button is-link" type="submit" name="action">
-                    <span class="icon">
-                    <i class="far fa-save"></i>
-                    </span>
-                    <span>Save</span>
-                    </button>
-                    </p>
-                </form>
-            </div>
+<!-- Submit Form Button -->
+                <button class="btn waves-effect waves-light" 
+                type="submit" 
+                name="action">Submit
+                <i class="large material-icons right">save</i>
+                </button>
+            </form>
         </div>
-    </section>
-    {% endblock %}
-</body>
+    </section>              
+{% endblock %}

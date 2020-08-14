@@ -1,49 +1,54 @@
-{% extends 'base.html' %}
-<body>
-{% block content %}
+{% extends 'base.html' %} {% block content %}
+<section class="container">
+    <div class="row grid">
 <!-- Loop for displaying all retrieved recipes from MongoDB -->
-{% for recipe in user_recipes %}
-    <section>
-        <div class="container is-fluid">
-            <div class="columns is-centered">
-                <div class="column is-three-fifths is-three-quarters-mobile">
-                    <article class="media">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <span class="category_icon">{{ recipe.category_name }}</span>
-                            </p>
-                        </figure>
-                        <div class="media-content">
-                        <!-- Recipe Content -->
-                            <div class="content">
-                                <p>
-                                <h3 class="categoryname">{{ recipe.category_name }}</h3>
-                                <h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
-                                <br><br><h4>Preparation Instructions</h4>
-                                {{ recipe.preparation_instructions }}
-                                <br><br><h4>Cooking Instructions</h4>
-                                {{ recipe.cooking_instructions }}
-                                </p>
-                                <h4>Ingredients</h4>
-                                {{recipe.ingredients}}
-                            </div>
-                            <!-- Update and delete Nav Icons-->
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                <a class="level-item" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-                                <span class="icon is-small"><i class="far fa-edit"></i></span>
-                                </a>
-                                <a class="level-item" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
-                                <span class="icon is-small"><i class="far fa-trash-alt"></i></span>
-                                </a>
-                                </div>
-                            </nav>
-                        </div>
-                    </article>
+    {% for recipe in user_recipes %}
+        <div class="item">
+        <div class="card light-blue lighten-5 content">
+            <div class="card-content">
+                <span class="category_icon">{{ recipe.category_name }}</span>
+<!-- Recipe Content -->
+                <span class="card-title"
+                ><h4>{{ recipe.category_name }}</h4>
+                <br />
+                {{ recipe.recipe_name}}</span
+                >
+                <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small>
+                <small
+                ><strong>Cooking Time: </strong>{{ recipe.cook_time}} min
+                </small>
+                <br />
+                <br />
+                <span class="card-title">Preparation Instructions</span>
+                {{ recipe.preparation_instructions }}
+                <br />
+                <br />
+                <span class="card-title">Cooking Instructions</span>
+                {{ recipe.cooking_instructions }}
+                <br />
+                <span class="card-title">Ingredients</span>
+                {{recipe.ingredients}}
+                <div class="card-action">
+                <a
+                class="level-item"
+                href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+                >
+                <span class="icon is-small"><i class="far fa-edit"></i></span>
+                </a>
+                <a
+                class="level-item"
+                href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+                >
+                <span class="icon is-small"
+                ><i class="far fa-trash-alt"></i
+                ></span>
+                </a>
                 </div>
             </div>
+<!-- Update and delete Nav Icons-->
         </div>
-    </section>
-{% endfor %}
+        </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
-</body>

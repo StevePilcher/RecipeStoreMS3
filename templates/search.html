@@ -1,53 +1,28 @@
 {% extends 'base.html' %}
-<body>
 {% block content %}
 <!-- Search form with Individual buttons representing categories -->
-<section class="section container is-fluid">
-    <div class="columns is-mobile is-centered">
-      <div class="columns is-two-thirds">
-            <form action="{{url_for('search')}}"> 
-                <div class="buttons">
+<section class="section container">
+    <div class="row">
+      <div class="col s8 l10 offset-l1 offset-s2">
+            <form class="button-form" action="{{url_for('search')}}"> 
+                <div class="btn-group">
                     <!-- Breakfast Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Breakfast" >
-                        <span class="icon is-medium">
-                        <img src="./static/images/breakfast.png">
-                        </span>
-                        <span>Breakfast</span>
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Breakfast">Breakfast
                     </button>
                     <!-- Lunch Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Lunch">
-                        <span class="icon is-medium">
-                        <img src="./static/images/lunch.png">
-                        </span>
-                        <span>Lunch</span>
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Lunch">Lunch
                     </button>
                     <!-- Dinner Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Dinner">
-                        <span class="icon is-medium">
-                        <img src="./static/images/dinner.png">
-                        </span>
-                        <span>Dinner</span>
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Dinner">Dinner
                     </button>
                     <!-- Brunch Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Brunch">
-                        <span class="icon is-medium">
-                        <img src="./static/images/brunch.png">
-                        </span>
-                        <span>Brunch</span>
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Brunch">Brunch
                     </button>
-                    <!-- Baking Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Baking">
-                        <span class="icon is-medium">
-                        <img src="./static/images/baking.png">
-                        </span>
-                        <span>Baking</span>
+                    <!-- Baking Button --> 
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Baking">Baking
                     </button>
                     <!-- Dessert Button -->
-                    <button class="button category-button is-large" type="submit" name="submit_button" value="Dessert">
-                        <span class="icon is-medium">
-                        <img src="./static/images/dessert.png">
-                        </span>
-                        <span>Dessert</span>
+                    <button class="btn waves-effect blue darken-4" type="submit" name="submit_button" value="Dessert">Dessert
                     </button>
                 </div>
             </form>
@@ -55,48 +30,56 @@
     </div>
 </section>
 <!-- Displayed Content from Search -->
-{% for recipe in user_recipes %}
-    <section>
-        <div class="container is-fluid is-mobile">
-            <div class="columns is-centered">
-                <div class="column is-three-fifths">
-                    <article class="media">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <span class="category_icon">{{ recipe.category_name }}</span>
-                            </p>
-                        </figure>
-                        <div class="media-content">
-                        <!-- Recipe Content -->
-                            <div class="content">
-                                <p>
-                                <h3 class="categoryname">{{ recipe.category_name }}</h3>
-                                <h4><br>{{ recipe.recipe_name}}</h4> <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small><small><strong>Cooking Time: </strong>{{ recipe.cook_time}} min </small>
-                                <br><br><h4>Preparation Instructions</h4>
-                                {{ recipe.preparation_instructions }}
-                                <br><br><h4>Cooking Instructions</h4>
-                                {{ recipe.cooking_instructions }}
-                                </p>
-                                <h4>Ingredients</h4>
-                                {{recipe.ingredients}}
-                            </div>
-                            <!-- Update and delete Nav Icons-->
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                <a class="level-item" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}">
-                                <span class="icon is-small"><i class="far fa-edit"></i></span>
-                                </a>
-                                <a class="level-item" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
-                                <span class="icon is-small"><i class="far fa-trash-alt"></i></span>
-                                </a>
-                                </div>
-                            </nav>
-                        </div>
-                    </article>
+<section class="container">
+    <div class="row grid">
+<!-- Loop for displaying all retrieved recipes from MongoDB -->
+    {% for recipe in user_recipes %}
+        <div class="item">
+        <div class="card light-blue lighten-5 content">
+            <div class="card-content">
+                <span class="category_icon">{{ recipe.category_name }}</span>
+<!-- Recipe Content -->
+                <span class="card-title"
+                ><h4>{{ recipe.category_name }}</h4>
+                <br />
+                {{ recipe.recipe_name}}</span
+                >
+                <small><strong>Prep Time: </strong>{{ recipe.prep_time}} min </small>
+                <small
+                ><strong>Cooking Time: </strong>{{ recipe.cook_time}} min
+                </small>
+                <br />
+                <br />
+                <span class="card-title">Preparation Instructions</span>
+                {{ recipe.preparation_instructions }}
+                <br />
+                <br />
+                <span class="card-title">Cooking Instructions</span>
+                {{ recipe.cooking_instructions }}
+                <br />
+                <span class="card-title">Ingredients</span>
+                {{recipe.ingredients}}
+                <div class="card-action">
+<!-- Update and delete Nav Icons-->
+                <a
+                class="level-item"
+                href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+                >
+                <span class="icon is-small"><i class="far fa-edit"></i></span>
+                </a>
+                <a
+                class="level-item"
+                href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+                >
+                <span class="icon is-small"
+                ><i class="far fa-trash-alt"></i
+                ></span>
+                </a>
                 </div>
             </div>
         </div>
-    </section>
-{% endfor %}
+        </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
-</body>

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html class="bg has-navbar-fixed-top">
     <head>
-        <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"/>
-        <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+<!-- Materialize Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified Materialize CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- Local CSS -->
         <link
         rel="stylesheet"
         href="{{url_for('static', filename='css/style.css')}}"
         type="text/css"/>
-    <!-- Page title if statement, passed in from app.py on render_template-->
+<!-- Page title if statement, passed in from app.py on render_template-->
         {% if title %}
         <title>{{ title }} - Recipe Store</title>
         {% else %}
@@ -19,49 +18,43 @@
         {% endif %}
     </head>
     <body>
-        <section>
-            <nav class="navbar is-info is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="{{ url_for('index') }}">Recipe Store</a>
-        <!-- If statement, if user logged in is true the search and create nav are displayed -->
+        <section id="NavBar">
+            <div class="navbar-fixed ">
+                <nav class="blue lighten-1">
+                    <div class="nav-wrapper">
+                    <a href="{{ url_for('index') }}" class="brand-logo" >Recipe Store</a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+<!-- If statement, if user logged in is true the search and create nav are displayed -->
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if user_id %}
-                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item" href="{{ url_for('create_recipe') }}">
-                        Create Recipe
-                        </a>
-                        <a class="navbar-item" href="{{ url_for('categories') }}">
-                        Search Categories
-                        </a>
+                        <li><a class="navbar-item" href="{{ url_for('create_recipe') }}">Create Recipe</a></li>
+                        <li><a class="navbar-item" href="{{ url_for('categories') }}">Search Categories</a></li>
                     {% endif %}
+                    <!-- If statement, if user logged in is true the log out is displayed, else sign up and login are -->
+                    {% if user_id %}
+                        <li><a class="waves-effect red darken-2 btn" href="{{ url_for('logout') }}"><strong>Log Out</strong></a></li>
+                    {% else %}
+                        <li><a class="waves-effect orange darken-1 btn" href="{{ url_for('signup') }}"><strong>Sign up</strong></a></li>
+                        <li><a class="waves-effect green btn" href="{{ url_for('index') }}">Log in</a></li>
+                    {% endif %}    
+                    </ul>
                     </div>
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-        <!-- If statement, if user logged in is true the log out is displayed, else sign up and login are -->
-                            {% if user_id %}
-                            <a class="button is-danger" href="{{ url_for('logout') }}">
-                            <strong>Log Out</strong>
-                            </a>
-                            {% else %}
-                            <a class="button is-success" href="{{ url_for('signup') }}">
-                            <strong>Sign up</strong>
-                            </a>
-                            <a class="button is-link" href="{{ url_for('index') }}">
-                            Log in
-                            </a>
-                            {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
+<!-- Nav Repeat for Mobile View -->
+            <ul class="sidenav" id="mobile-demo">
+                {% if user_id %}
+                    <li><a class="navbar-item" href="{{ url_for('create_recipe') }}">Create Recipe</a></li>
+                    <li><a class="navbar-item" href="{{ url_for('categories') }}">Search Categories</a></li>
+                {% endif %}
+<!-- If statement, if user logged in is true the log out is displayed, else sign up and login are -->
+                {% if user_id %}
+                    <li><a class="waves-effect red btn" href="{{ url_for('logout') }}"><strong>Log Out</strong></a></li>
+                {% else %}
+                    <li><a class="waves-effect indigo darken-4 btn" href="{{ url_for('signup') }}"><strong>Sign up</strong></a></li>
+                    <li><a class="waves-effect waves-light btn" href="{{ url_for('index') }}">Log in</a></li>
+                {% endif %}
+            </ul>
         </section>
         <section id="contents">
 <!-- Content block for template extensions -->
@@ -72,8 +65,14 @@
         src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
         ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script
         src="{{url_for('static', filename='js/base.js')}}"
+        type="text/javascript"
+        ></script>
+        <script
+        src="{{url_for('static', filename='js/masonry.js')}}"
         type="text/javascript"
         ></script>
     </body>

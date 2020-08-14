@@ -1,12 +1,10 @@
-//Nav bar init and toggle for burger icon in mobile:
+//Inits for materialize elements:
 
 $(document).ready(function() {
-    $(".navbar-burger").click(function() {
-    $(".navbar-burger").toggleClass("is-active");
-    $(".navbar-menu").toggleClass("is-active");
-});
+    $('.sidenav').sidenav();
+    $('select').formSelect();
 
-// Change Icon for categories when displaying my recipes;
+// Change Icon for categories when displaying recipes from Mongo;
 
 $(".category_icon").each(function(index) {
     if ($(this).html() == "Breakfast") {
