@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@600&display=swap');
 
-/* Background Colours */
+/* Background Colours & General */
 html {
     font-family: Recursive, sans-serif;
     background-repeat: no-repeat;
@@ -16,7 +16,7 @@ h4 {
     margin: 0;
 }
 
-/* Login HTML */
+/* Login-Signup HTML */
 
 form {
     background-color: #e3f2fd;
@@ -76,14 +76,3 @@ form {
   grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
   grid-auto-rows: 100px;
 }
-
-
-
-
-
-
-
-
-
-/* Media Query */ 
-

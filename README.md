@@ -43,7 +43,7 @@ Simple form structures clearly identify input fields for the user to create any 
 
 The linked file to the wireframe mockup of the website.
 
-[Wireframe PDF](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/WireFrameMS3.pdf) 
+[Wireframe PDF](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/static/files/WireFrameMS3.pdf) 
 
 
 ## Features
@@ -72,7 +72,7 @@ The following technologies were used;
 
 - HTML5 
 - CSS3
-- Bulma (with integrated Javascript)
+- Materialize (with integrated Javascript)
 - JQUERY (for easier DOM manipulation)
 - Python+Flask
 - MongoDB
@@ -96,11 +96,11 @@ Chrome Dev tools were used to simulate the following devices for testing;
 - Pixel 2 & 2XL
 - Samsung S10 Plus 
 - Samsung Galaxy Tab (Portrait)
-- iPad (Portrait) 
+- iPad 
 
 ### Known Issues
 
-- Category search icons not showing correctly on Microsoft IE 
+- Masonary display effect can sometimes not render correctly and does not leave a gap between recipes. Especially when changing from desktop view to smaller screen sizes. 
 
 ## Validators 
 
@@ -144,6 +144,7 @@ The following scenarios were manually tested;
 This project was deployed using Heroku and can found [here](https://recipestoremongo.herokuapp.com/). This version was off of the master branch from GitHub [here](https://github.com/StevePilcher/RecipeStoreMS3), there are no differences between the deployed and deployment versions. 
 
 ## Credits
+
 - Fonts taken from [Google Fonts](https://fonts.google.com)
 
 ### Media
@@ -151,7 +152,7 @@ This project was deployed using Heroku and can found [here](https://recipestorem
 - Category Icons can be found at [Flat Icon](https://www.flaticon.com/)
 
 ### Acknowledgements
-- Masonary CSS/JS layout from [StackOverflow](https://stackoverflow.com/questions/43917346/masonry-layout-with-css-grid)
+- Masonary CSS/JS layout copied from [StackOverflow](https://stackoverflow.com/questions/43917346/masonry-layout-with-css-grid)
 - Additional Flask learning from Pretty Printed's YouTube video 'Creating a User Login System Using Python, Flask and MongoDB [YouTube](https://www.youtube.com/watch?v=vVx1737auSE)
 - I received inspiration for this project from [Pinterest](https://www.pinterest.co.uk/pilchy1983/developer-ideas/). 
 - Code debugging help from my mentor Adegbenga Adeye

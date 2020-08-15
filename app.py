@@ -7,19 +7,24 @@ from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
 
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = 'recipe_manager'
 app.config["MONGO_URI"] = 'mongodb+srv://root:r00tUser@myfirstcluster.djr3q.mongodb.net/recipe_manager?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
+#Home route that checks for a logged in user
+
 @app.route('/')
 def index():
     if 'userid' in session:
         return redirect(url_for('my_recipes', user=['userid']))
     return render_template('login.html', title='Home')
+
+
+#Login user verification with flash message for failed login
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -32,10 +37,15 @@ def login():
 
     return render_template('login.html', message=flash('The username {} does not exist!'.format(request.form["username"], title='Home')))
 
+#Logout route to pop user from session
+
 @app.route("/logout")
 def logout():
     session.pop('userid', None)
     return render_template('login.html', title='Home')
+
+
+#Signup route with check for existing username
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -54,12 +64,17 @@ def signup():
 
     return render_template('signup.html')
 
+
+#Create route for input form
+
 @app.route('/create_recipe')
 def create_recipe():
     user_id = session['userid']
     if 'userid' in session:
         return render_template('createrecipe.html', title='Create Recipe', user_id=user_id, categories=mongo.db.categories.find())
     return render_template('login.html')
+
+#Insert recipe and assign logged in user to that recipe
 
 @app.route('/insert_recipe', methods=['POST','GET'])
 def insert_recipe():
@@ -70,10 +85,14 @@ def insert_recipe():
     group_recipe = recipes.insert_one(group_recipe)
     return redirect(url_for('my_recipes'))
 
+#Delete recipe function from Mongo
+
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('my_recipes'))
+
+#Find all recipes associated with that user and display
 
 @app.route('/my_recipes')
 def my_recipes():
@@ -87,12 +106,16 @@ def my_recipes():
 
     return render_template('myrecipes.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
 
+#Edit route, retrieve and display the specific recipe
+
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = mongo.db.categories.find()
     return render_template('editrecipe.html', recipe=the_recipe, categories = categories)
 
+
+#Update the edited recipe back to Mongo
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
@@ -111,17 +134,21 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('my_recipes'))
 
+#Display page of categories to search
+
 @app.route('/categories')
 def categories():
     user_id = session['userid']
     return render_template('search.html', user_id = user_id)
+
+#Search particular category of recipes owned by that user.
 
 @app.route('/search')
 def search():
     user_id = session['userid']
     category_name = request.values.get('submit_button')
     user_recipes = mongo.db.recipes.find({'userid': user_id,'category_name': category_name})
-    return render_template('search.html', user_recipes=user_recipes, user_id = user_id, title = 'My Recipes')
+    return render_template('search.html', user_recipes=user_recipes, user_id = user_id, title = 'category_name')
 
 if __name__ == '__main__':
     app.secret_key= 'mysecret'
