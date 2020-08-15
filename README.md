@@ -106,12 +106,12 @@ Chrome Dev tools were used to simulate the following devices for testing;
 
 ### W3C Markup Validator 
 
-- Warnings and Errors found are related to syntax for python and or flask so can be disocunted
-
+- 3 Warnings, 2 for lack of heading element used on sections (I feel headings are not required for UX), 1 for an h1 being used. 
 
 ### W3C CSS Validator 
 
 - No errors or warnings were found on style.css
+- 1 error associated with Materialize's minified css
 
 ### JSHint
 
@@ -121,9 +121,10 @@ Chrome Dev tools were used to simulate the following devices for testing;
 
 The following scenarios were manually tested;
 
-1. Page Load:
-    1. 
-    2. 
+1. App Loads:
+    1. App Loads
+    2. Attempt to click 'login' button before entering details
+    3. Page reloads with red warning 'The username does not exist'
     
 2. :
     1. . 

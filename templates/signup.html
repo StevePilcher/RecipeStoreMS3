@@ -12,7 +12,12 @@
             <form method="POST" action="/signup">
                 <div class="input-field">
                     <div class="control">
-                        <input class="input is-large" type="text" name="username" placeholder="Name" autofocus="">
+                        <input 
+                        class="input is-large" 
+                        type="text" 
+                        name="username" 
+                        placeholder="Name" 
+                        required>
                     </div>
 <!-- Display flashed messaged if Usernames are taken or incorrect --> <!-- Username field -->
                     {% with messages = get_flashed_messages() %} {% if messages %}
@@ -22,7 +27,12 @@
                 </div>
                 <div class="input-field">
                     <div class="control">
-                        <input class="input is-large" type="password" name="password" placeholder="Password">
+                        <input 
+                        class="input is-large" 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password"
+                        required>
                     </div>
                 </div>
                 <button class="btn waves-effect orange darken-1" type="submit" name="action">Sign Up
