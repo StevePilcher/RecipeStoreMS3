@@ -1,26 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="column is-4 is-offset-4">
-        <h3 class="title title is-size-2 is-size-1-mobile has-text-centered has-text-white">Sign Up</h3>
-        <div class="box">
+<section id="login-form container">
+    <div class="row">
+        <div class="title">
+            <h1>Sign Up!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m4 s10 offset-m4 offset-s1">
+        
             <form method="POST" action="/signup">
-                <div class="field">
+                <div class="input-field">
                     <div class="control">
                         <input class="input is-large" type="text" name="username" placeholder="Name" autofocus="">
                     </div>
-                    <!-- Display flashed messaged if Usernames are taken or incorrect --> <!-- Username field -->
+<!-- Display flashed messaged if Usernames are taken or incorrect --> <!-- Username field -->
                     {% with messages = get_flashed_messages() %} {% if messages %}
                     {% for message in messages %} 
-                    <p class="help is-danger">{{ message }}</p>
+                    <p class="help">{{ message }}</p>
                     {% endfor %}{% endif %}{% endwith %}
                 </div>
-                <div class="field">
+                <div class="input-field">
                     <div class="control">
                         <input class="input is-large" type="password" name="password" placeholder="Password">
                     </div>
                 </div>
-                <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+                <button class="btn waves-effect orange darken-1" type="submit" name="action">Sign Up
+                <i class="material-icons right">lock_open</i>
+                </button>
             </form>
-        </div>
     </div>
 {% endblock %}

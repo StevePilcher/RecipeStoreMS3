@@ -3,7 +3,7 @@
 <section id="login-form container">
     <div class="row">
         <div class="title">
-        <!-- <h1>Welcome to the Recipe Store!</h1> -->
+            <h1>Welcome to the Recipe Store!</h1>
         </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
                     </div>
                     {% with messages = get_flashed_messages() %} {% if messages %}
                     {% for message in messages %} 
-                    <p class="help red darken-2">{{ message }}</p>
+                    <p class="help">{{ message }}</p>
                     {% endfor %}{% endif %}{% endwith %}
                 </div>
 <!-- Password field -->

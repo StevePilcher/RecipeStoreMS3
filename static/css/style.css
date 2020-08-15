@@ -29,7 +29,9 @@ form {
 .task_header {
     margin-top: 5px;
 }
-
+.help {
+    color: red;
+}
 /* Alignment of recipes displayed in Media Content */
 
 .media {
@@ -70,7 +72,7 @@ form {
 }
 .grid {
   display: grid;
-  grid-gap: 15px;
+  grid-gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
   grid-auto-rows: 100px;
 }

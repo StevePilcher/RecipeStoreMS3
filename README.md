@@ -9,7 +9,8 @@ The app I created is a single page site. I chose to create an online recipe sapp
 
 ## UX
  
-The UX is a simple single page. A standard navbar which concatenates to a burger icon when in mobile view allows users to recognise the simple nav structure. The 'log in' & 'Sign Up' buttons are only visible when the user isn't logged in, otherwise a 'Log Out' button replaces them. The recipes are displayed vertically down the centre of the site once retrieved from MongoDB.
+The UX is a simple single page. A standard navbar which concatenates to a burger icon when in mobile view allows users to recognise the simple nav structure. The 'log in' & 'Sign Up' buttons are only visible when the user isn't logged in, otherwise a 'Log Out' button replaces them. The recipes are displayed in a masonary pattern across the page when screen width allows once retrieved from MongoDB.
+
 Simple form structures clearly identify input fields for the user to create any recipes. 
 
 ### Typical User Stories
