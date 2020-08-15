@@ -148,7 +148,7 @@ def search():
     user_id = session['userid']
     category_name = request.values.get('submit_button')
     user_recipes = mongo.db.recipes.find({'userid': user_id,'category_name': category_name})
-    return render_template('search.html', user_recipes=user_recipes, user_id = user_id, title = 'category_name')
+    return render_template('search.html', user_recipes=user_recipes, user_id = user_id, title = category_name )
 
 if __name__ == '__main__':
     app.secret_key= 'mysecret'
