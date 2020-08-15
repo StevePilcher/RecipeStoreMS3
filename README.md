@@ -208,7 +208,7 @@ This project was deployed using Heroku and can found [here](https://recipestorem
 - Category Icons can be found at [Flat Icon](https://www.flaticon.com/)
 
 ### Acknowledgements
-- Masonary CSS/JS layout copied from [StackOverflow](https://stackoverflow.com/questions/43917346/masonry-layout-with-css-grid)
+- Masonary CSS/JS layout copied from AndyBareFoot on [CodePen](https://codepen.io/andybarefoot/pen/QMeZda)
 - Additional Flask learning from Pretty Printed's YouTube video 'Creating a User Login System Using Python, Flask and MongoDB [YouTube](https://www.youtube.com/watch?v=vVx1737auSE)
 - I received inspiration for this project from [Pinterest](https://www.pinterest.co.uk/pilchy1983/developer-ideas/). 
 - Code debugging help from my mentor Adegbenga Adeye
