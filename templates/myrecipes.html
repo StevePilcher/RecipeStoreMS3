@@ -28,21 +28,21 @@
                 <br />
                 <span class="card-title">Ingredients</span>
                 {{recipe.ingredients}}
+<!-- Update and delete Nav Icons-->
                 <div class="card-action">
-                <a
-                class="level-item"
-                href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
-                >
-                <span class="icon is-small"><i class="far fa-edit"></i></span>
-                </a>
-                <a
-                class="level-item"
-                href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
-                >
-                <span class="icon is-small"
-                ><i class="far fa-trash-alt"></i
-                ></span>
-                </a>
+                    <a
+                    class="level-item"
+                    href="{{url_for('edit_recipe', recipe_id=recipe._id)}}"
+                    >
+                    <span class="icon "><i class="small material-icons">edit</i></span>
+                    </a>
+                    <a
+                    class="level-item"
+                    href="{{url_for('delete_recipe', recipe_id=recipe._id)}}"
+                    >
+                    <span class="icon"
+                    ><i class="small material-icons">delete_forever</i></span>
+                    </a>
                 </div>
             </div>
 <!-- Update and delete Nav Icons-->

@@ -7,6 +7,12 @@ This project was created for my Milestone 3 project for the Code Institute's Ful
 
 The app I created is a single page site. I chose to create an online recipe sapp which allows a user to be able to have an individual account for creating, editing and storing recipes.  
 
+## Test User 
+To showcase the app, a test user has been created with multiple recipes. Sign in these credentials;
+
+Username: Steve
+Password: ABC 
+
 ## UX
  
 The UX is a simple single page. A standard navbar which concatenates to a burger icon when in mobile view allows users to recognise the simple nav structure. The 'log in' & 'Sign Up' buttons are only visible when the user isn't logged in, otherwise a 'Log Out' button replaces them. The recipes are displayed in a masonary pattern across the page when screen width allows once retrieved from MongoDB.
@@ -65,6 +71,7 @@ The linked file to the wireframe mockup of the website.
 
 2. Images attachments - all image attachments to be store with recipes. 
 
+3. Improved editing recipe features when in smaller screen sizes. Breadcrumbing each field as it's edited would be a better UX. This would require a complete overhaul of the current form submission function. 
 
 ## Technologies Used
 
@@ -121,24 +128,65 @@ Chrome Dev tools were used to simulate the following devices for testing;
 
 The following scenarios were manually tested;
 
-1. App Loads:
+1. App Loading/Login page:
     1. App Loads
-    2. Attempt to click 'login' button before entering details
-    3. Page reloads with red warning 'The username does not exist'
+    2. Attempt to click 'login' button before entering neither or 1 of the inputs
+    3. 'Please fill in this field' appears below input field
+
+    1. Attempt login with new user account
+    2. Page returns red error text under the input 'Username does not exist'
     
-2. :
-    1. . 
-    2. .
-    3. . 
-    4. . 
-    5. .
-    6. .
-    7. .
+    1. User clicks either 'sign up' button or 'Sign up here!' link
+    2. User redirects to sign up page
 
-3. :
-    1. .
-    2. .
+2. Sign up page:
+    1. Page Loads
+    2. Attempt to click 'sign up' button before entering neither or 1 of the inputs
+    3. 'Please fill in this field' appears below input field not fille in
 
+    1. User signs up an existing username. 
+    2. Page returns red error text under the input 'The username already exists'
+    
+    1. User signs up with unique username and password 
+    2. Form accepts and redirects to my recipes page
+
+3. User log out :
+    1. On successful login.
+    2. Nav bar now displays 'log out' button on all pages
+    3. User clicks 'log out' button
+    4. User is logged out and redirected to login page
+
+4. Create Recipe :
+    1. Logged in user clicks link 'Create Recipe' 
+    2. Page redirects to Create Recipe form
+    3. Dropdown field 'Category Select' populates with MongoDB categories
+    4. Fields 'Recipe Name, Ingredients, Prep and Cook Instructions' highlight when clicked on
+    5. Dropdown fields 'Prep & Cook Time' populate with list of timing options
+    
+    1. Attempt to submit without all of the fields selected
+    2. 'Please fill in this field' flashes up for inputs that are required
+
+    1. User fills in all of the required inputs
+    2. User clicks submit 
+    3. Recipe is inserted to MongoDB under that username
+    4. Page redirects to disply all saved recipes 
+    
+5. Edit Recipe :
+    1. From the My Recipes page, user scrolls to individual recipe and clicks edit icon
+    2. Page redirects to the pre-filled in create form with requested recipe displayed for editing
+    3. User edits any or all of the fields
+    4. User clicks the form submit button
+    5. On submission, user gets redirected back to all recipes with the updated recipe displayed. 
+
+    1. User tries to resubmit the recipe with blank fields 
+    2. 'Please fill in this field' flashes up to stop blank submission
+
+6.  Search Category :
+    1. User clicks on the search category nav link 
+    2. Redirects to the search page
+    3. 6 buttons representing each category are displayed
+    4. User clicks on a button and page refreshes with any recipes the user owns in the particular category
+    5. User clicks an alternate category button and page refreshes with new recipes. 
 
 ## Deployment
 

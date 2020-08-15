@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-    <section class="section container is-fluid">
-        <div class="columns is-mobile is-centered">
-            <div class="column is-half">
-                <h4>Edit Recipe</h4><br>
-                <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
-                    <!-- For loop to get the recipe category for editing -->
-                    <div class="control has-icons-left">
-                        <div class="select is-info">
-                            <select class="is-hovered" id="category_name" name="category_name" required>
+<section class="container">
+    <h1 class="title">Edit Recipe</h1>
+    <div class="row">
+<!-- Create Recipe Form with action for recipe insertion-->
+            <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select class="is-hovered" id="category_name" name="category_name" required>
                             <option>Recipe Category</option>
                             {% for cat in categories %}
                             {% if cat.category_name == recipe.category_name%}
@@ -18,167 +17,125 @@
                             {% endif %}
                             {% endfor %}
                             </select>
-                        </div>
-                        <div>
-                        <span class="icon is-left">
-                            <i class="fas fa-utensils"></i>
-                        </span>
-                        </div>
-                        <br>
+                        <label for="category_name">Category Select</label>
                     </div>
-                    <!-- Recipe Name Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Recipe Name</label>
-                            <div class="field-body">
-                                <div class="field">
-                                    <p class="control">
-                                        <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" value="{{ recipe.recipe_name}}" required/>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+<!-- Recipe Name Field -->
+                    <div class="input-field col s6">
+                        <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" value="{{ recipe.recipe_name}}" required/>
+                        <label for="recipe_name">Recipe Name</label>
                     </div>
-                    <!-- Ingredients Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label level-left">Ingredients List
-                            <nav class="level is-mobile" id="add_ingredient_field">
-                            <a class="level-item">
-                            <span class="icon is-small"
-                            ><i class="fas fa-plus-circle"></i
-                            ></span>
-                            </a>
-                            </nav>
-                            </label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <input id="ingredients" name="ingredients"
-                                class="input is-info is-hovered"
-                                type="text"
-                                placeholder="Ingredient Item" value="{{recipe.ingredients}}" required/>
-                                </p>
-                            </div>
-                        </div>
+                </div>
+<!-- Recipe Ingredient Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="ingredients" 
+                        name="ingredients"
+                        class="input is-info is-hovered"
+                        type="text"
+                        placeholder="Ingredient Item" value="{{recipe.ingredients}}" required/>
+                        <label for="ingredients">Ingredients</label>
                     </div>
-                    <!-- Prep Instruction Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Preparation Instructions</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <textarea class="textarea is-info" placeholder="Preparation Instructions" id="preparation_instructions" name="preparation_instructions" required>{{recipe.preparation_instructions }}</textarea>
-                                </p>
-                            </div>
-                        </div>
+                </div>
+<!-- Prep Instruction Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea
+                        id="preptextarea" 
+                        class="materialize-textarea"
+                        id="preparation_instructions"
+                        name="preparation_instructions"
+                        placeholder="Prepartion Instructions" 
+                        required >{{recipe.preparation_instructions }}
+                        </textarea>
+                        <label for="preptextarea">Prepartion Instructions</label>
                     </div>
-                    <!-- Cooking Instruction Field -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Cooking Instructions</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control">
-                                <textarea class="textarea is-info" placeholder="Preparation Instructions" id="cooking_instructions" name="cooking_instructions" required>{{ recipe.cooking_instructions }}</textarea>
-                                </p>
-                            </div>
-                        </div>
+                </div>
+<!-- Cooking Instruction Field -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea
+                        id="cooktextarea" 
+                        class="materialize-textarea"
+                        id="cooking_instructions" 
+                        name="cooking_instructions"
+                        placeholder="Cooking Instructions"
+                        required>{{ recipe.cooking_instructions }}
+                        </textarea>
+                        <label for="cooktextarea">Cooking Instructions</label>
                     </div>
-                    <!-- Timings Dropdown Fields -->
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label">Prep Time</label>
-                        </div>
-                        <div class="control has-icons-left">
-                            <div class="select is-info">
-                                <select class="is-hovered" id="prep_time" name="prep_time" required>
-                                    <option value="{{recipe.prep_time}}" selected></option>
-                                    <option value="5">5 mins</option>
-                                    <option value="10">10 mins</option>
-                                    <option value="15">15 mins</option>
-                                    <option value="20">20 mins</option>
-                                    <option value="25">25 mins</option>
-                                    <option value="30">30 mins</option>
-                                    <option value="35">35 mins</option>
-                                    <option value="40">40 mins</option>
-                                    <option value="45">45 mins</option>
-                                    <option value="50">50 mins</option>
-                                    <option value="55">55 mins</option>
-                                    <option value="60">60 mins</option>
-                                    <option value="65">65 mins</option>
-                                    <option value="70">70 mins</option>
-                                    <option value="75">75 mins</option>
-                                    <option value="80">80 mins</option>
-                                    <option value="85">85 mins</option>
-                                    <option value="90">90 mins</option>
-                                    <option value="95">95 mins</option>
-                                    <option value="100">100 mins</option>
-                                    <option value="105">105 mins</option>
-                                    <option value="110">110 mins</option>
-                                    <option value="115">115 mins</option>
-                                    <option value="120">120 mins</option>
-                                </select>
-                            </div>
-                            <span class="icon is-left">
-                            <i class="far fa-clock"></i>
-                            </span>
-                        </div>
-                        <div class="field">
-                            <div class="label is-normal">
-                                <label class="label">Cooking Time</label>
-                            </div>
-                            <div class="control has-icons-left">
-                                <div class="select is-info">
-                                    <select class="is-hovered" id="cook_time" name="cook_time" required>
-                                        <option value="{{ recipe.cook_time}}" selected></option>
-                                        <option value="5">5 mins</option>
-                                        <option value="10">10 mins</option>
-                                        <option value="15">15 mins</option>
-                                        <option value="20">20 mins</option>
-                                        <option value="25">25 mins</option>
-                                        <option value="30">30 mins</option>
-                                        <option value="35">35 mins</option>
-                                        <option value="40">40 mins</option>
-                                        <option value="45">45 mins</option>
-                                        <option value="50">50 mins</option>
-                                        <option value="55">55 mins</option>
-                                        <option value="60">60 mins</option>
-                                        <option value="65">65 mins</option>
-                                        <option value="70">70 mins</option>
-                                        <option value="75">75 mins</option>
-                                        <option value="80">80 mins</option>
-                                        <option value="85">85 mins</option>
-                                        <option value="90">90 mins</option>
-                                        <option value="95">95 mins</option>
-                                        <option value="100">100 mins</option>
-                                        <option value="105">105 mins</option>
-                                        <option value="110">110 mins</option>
-                                        <option value="115">115 mins</option>
-                                        <option value="120">120 mins</option>
-                                    </select>
-                                </div>
-                                <span class="icon is-left">
-                                <i class="far fa-clock"></i>
-                                </span>
-                            </div>
-                        </div>
+                </div>
+<!-- Timing Field Dropdowns -->
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="prep_time"
+                        name="prep_time" required>
+                            <option value="{{recipe.prep_time}}" selected></option>
+                            <option value="5">5 mins</option>
+                            <option value="10">10 mins</option>
+                            <option value="15">15 mins</option>
+                            <option value="20">20 mins</option>
+                            <option value="25">25 mins</option>
+                            <option value="30">30 mins</option>
+                            <option value="35">35 mins</option>
+                            <option value="40">40 mins</option>
+                            <option value="45">45 mins</option>
+                            <option value="50">50 mins</option>
+                            <option value="55">55 mins</option>
+                            <option value="60">60 mins</option>
+                            <option value="65">65 mins</option>
+                            <option value="70">70 mins</option>
+                            <option value="75">75 mins</option>
+                            <option value="80">80 mins</option>
+                            <option value="85">85 mins</option>
+                            <option value="90">90 mins</option>
+                            <option value="95">95 mins</option>
+                            <option value="100">100 mins</option>
+                            <option value="105">105 mins</option>
+                            <option value="110">110 mins</option>
+                            <option value="115">115 mins</option>
+                            <option value="120">120 mins</option>
+                        </select>
+                        <label>Prep Time</label>
                     </div>
-                    <p class="buttons">
-                    <button class="button is-link" type="submit" name="action">
-                    <span class="icon">
-                    <i class="far fa-save"></i>
-                    </span>
-                    <span>Save</span>
-                    </button>
-                    </p>
-                </form>
-            </div>
-        </div>
-    </section>
+                    <div class="input-field col s6">
+                        <select id="cook_time"
+                        name="cook_time" required>
+                            <option value="{{recipe.cook_time}}" selected></option>
+                            <option value="5">5 mins</option>
+                            <option value="10">10 mins</option>
+                            <option value="15">15 mins</option>
+                            <option value="20">20 mins</option>
+                            <option value="25">25 mins</option>
+                            <option value="30">30 mins</option>
+                            <option value="35">35 mins</option>
+                            <option value="40">40 mins</option>
+                            <option value="45">45 mins</option>
+                            <option value="50">50 mins</option>
+                            <option value="55">55 mins</option>
+                            <option value="60">60 mins</option>
+                            <option value="65">65 mins</option>
+                            <option value="70">70 mins</option>
+                            <option value="75">75 mins</option>
+                            <option value="80">80 mins</option>
+                            <option value="85">85 mins</option>
+                            <option value="90">90 mins</option>
+                            <option value="95">95 mins</option>
+                            <option value="100">100 mins</option>
+                            <option value="105">105 mins</option>
+                            <option value="110">110 mins</option>
+                            <option value="115">115 mins</option>
+                            <option value="120">120 mins</option>
+                        </select>
+                        <label>Cooking Time</label>
+                    </div>
+                </div>
+<!-- Submit Form Button -->
+                <button class="btn waves-effect waves-light" 
+                type="submit" 
+                name="action">Submit
+                <i class="large material-icons right">save</i>
+                </button>
+            </form>
+    </div>
+</section>              
 {% endblock %}
-
