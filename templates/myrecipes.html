@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <section class="container">
-    <div class="row grid">
+    <div class="row">
+    <div class ="col s12 grid">
     <!-- Loop for displaying all retrieved recipes from MongoDB -->
     {% for recipe in user_recipes %}
         <div class="grid-item">
@@ -26,6 +27,7 @@
                     <span class="card-title">Cooking Instructions</span>
                     {{ recipe.cooking_instructions }}
                     <br />
+                    <br />
                     <span class="card-title">Ingredients</span>
                     {{recipe.ingredients}}
                     <!-- Update and delete Nav Icons-->
@@ -49,6 +51,7 @@
             </div>
         </div>
     {% endfor %}
+    </div>
     </div>
 </section>
 {% endblock %}

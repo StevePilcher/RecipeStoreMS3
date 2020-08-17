@@ -78,37 +78,26 @@ form {
 .card .card-action {
     padding: 5px;
 }
-/*
+
 .grid {
-  display: grid;
-  grid-gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
-  grid-auto-rows: 100px;
-}
-*/ 
-.grid {
-  max-width: 1200px;
+  max-width: 1275px;
 }
 
-/* clearfix */
+/* Masonary Items */
+
 .grid:after {
   content: '';
-  display: block;
+  display: ;
   clear: both;
 }
 
 /* ---- grid-item ---- */
 
 .grid-item {
-  width: 280px;
+  width: 305px;
   /* vertical gutter */
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 }
-
-
-
-
-
 
 /* Media Query */
 
