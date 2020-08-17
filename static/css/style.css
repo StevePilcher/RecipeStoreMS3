@@ -11,6 +11,10 @@ html {
     background-size: cover;
 }
 
+nav .brand-logo {
+    font-size: 1.5rem;
+}
+
 h1 {
     text-align: center;
     color: #e3f2fd;
@@ -87,15 +91,14 @@ form {
 
 .grid:after {
   content: '';
-  display: ;
+  display: block;
   clear: both;
 }
 
-/* ---- grid-item ---- */
-
+/* grid-items  */
+.grid-sizer,
 .grid-item {
-  width: 305px;
-  /* vertical gutter */
+  width: 24%;
   margin-bottom: 45px;
 }
 
@@ -106,4 +109,9 @@ form {
 h1 {
     font-size: 3.2rem;
 }
+}
+/* Resize Columns on S & M Screens */
+.grid-sizer,
+.grid-item {
+  width: 100%;
 }
