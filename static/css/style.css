@@ -98,21 +98,38 @@ form {
 /* grid-items  */
 .grid-sizer,
 .grid-item {
-  width: 24%;
+  width: 23.75%;
   margin-bottom: 45px;
 }
 
 /* Media Query */
 
-@media only screen and (max-width: 600px) {
+
+
+
+@media only screen and (min-width: 900px) {
 
 h1 {
     font-size: 3.2rem;
 }
-
 /* Resize Columns on S & M Screens */
 .grid-sizer,
 .grid-item {
   width: 95%;
+}
+}
+@media only screen and (min-width: 1024px) {
+/* Resize Columns on S & M Screens */
+.grid-sizer,
+.grid-item {
+  width: 47%;
+}
+}
+
+@media only screen and (min-width: 1200px) {
+/* Resize Columns on S & M Screens */
+.grid-sizer,
+.grid-item {
+  width: 30%;
 }
 }
