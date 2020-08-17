@@ -5,10 +5,10 @@
 
 This project was created for my Milestone 3 project for the Code Institute's Full Stack Dev course. The project requirements were to build a MongoDB-backed Flask project for a web application that allows users to store and manipulate data records about a particular domain using HTML, CSS, JavaScript, Python+Flask and MongoDB.
 
-The app I created is a single page site. I chose to create an online recipe sapp which allows a user to be able to have an individual account for creating, editing and storing recipes.  
+The app I created is a single page site. I chose to create an online recipes store app which allows a user to be able to have an individual account for creating, editing and storing their own recipes. 
 
 ## Test User 
-To showcase the app, a test user has been created with multiple recipes. Sign in these credentials;
+To showcase the app, a test user has been created with multiple recipes. Sign in with these credentials;
 
 Username: Steve
 Password: ABC 
@@ -103,11 +103,11 @@ Chrome Dev tools were used to simulate the following devices for testing;
 - Pixel 2 & 2XL
 - Samsung S10 Plus 
 - Samsung Galaxy Tab (Portrait)
-- iPad 
+- iPad & iPad Pro
 
 ### Known Issues
 
-- Masonary display effect can sometimes not render correctly and does not leave a gap between recipes. Especially when changing from desktop view to smaller screen sizes. 
+- Masonary display effect can sometimes not render with larger gaps between grid items than desired. Especially when changing view dynamically to smaller screen sizes.
 
 ## Validators 
 
