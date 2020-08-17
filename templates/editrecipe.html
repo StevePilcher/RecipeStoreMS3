@@ -3,7 +3,7 @@
 <section class="container">
     <h1 class="title">Edit Recipe</h1>
     <div class="row">
-<!-- Create Recipe Form with action for recipe insertion-->
+            <!-- Create Recipe Form with action for recipe insertion-->
             <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
                 <div class="row">
                     <div class="input-field col s6">
@@ -19,13 +19,13 @@
                             </select>
                         <label for="category_name">Category Select</label>
                     </div>
-<!-- Recipe Name Field -->
+                    <!-- Recipe Name Field -->
                     <div class="input-field col s6">
                         <input id="recipe_name" name="recipe_name" class="input is-info is-hovered" type="text" value="{{ recipe.recipe_name}}" required/>
                         <label for="recipe_name">Recipe Name</label>
                     </div>
                 </div>
-<!-- Recipe Ingredient Field -->
+                <!-- Recipe Ingredient Field -->
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="ingredients" 
@@ -36,7 +36,7 @@
                         <label for="ingredients">Ingredients</label>
                     </div>
                 </div>
-<!-- Prep Instruction Field -->
+                <!-- Prep Instruction Field -->
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea
@@ -50,7 +50,7 @@
                         <label for="preptextarea">Prepartion Instructions</label>
                     </div>
                 </div>
-<!-- Cooking Instruction Field -->
+                <!-- Cooking Instruction Field -->
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea
@@ -64,7 +64,7 @@
                         <label for="cooktextarea">Cooking Instructions</label>
                     </div>
                 </div>
-<!-- Timing Field Dropdowns -->
+                <!-- Timing Field Dropdowns -->
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="prep_time"
@@ -129,7 +129,7 @@
                         <label>Cooking Time</label>
                     </div>
                 </div>
-<!-- Submit Form Button -->
+                <!-- Submit Form Button -->
                 <button class="btn waves-effect waves-light" 
                 type="submit" 
                 name="action">Submit

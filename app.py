@@ -110,9 +110,10 @@ def my_recipes():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
+    user_id = session['userid']
     the_recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     categories = mongo.db.categories.find()
-    return render_template('editrecipe.html', recipe=the_recipe, categories = categories)
+    return render_template('editrecipe.html', recipe=the_recipe, categories = categories, user_id = user_id)
 
 
 #Update the edited recipe back to Mongo
