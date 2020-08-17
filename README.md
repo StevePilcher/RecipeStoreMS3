@@ -133,55 +133,62 @@ The following scenarios were manually tested;
     2. Attempt to click 'login' button before entering neither or 1 of the inputs
     3. 'Please fill in this field' appears below input field
 
+2. App Loading/Login page:
     1. Attempt login with new user account
     2. Page returns red error text under the input 'Username does not exist'
     
+3. App Loading/Login page:
     1. User clicks either 'sign up' button or 'Sign up here!' link
     2. User redirects to sign up page
 
-2. Sign up page:
+4. Sign up page:
     1. Page Loads
     2. Attempt to click 'sign up' button before entering neither or 1 of the inputs
     3. 'Please fill in this field' appears below input field not fille in
 
+5. Sign up page:
     1. User signs up an existing username. 
     2. Page returns red error text under the input 'The username already exists'
     
+6. Sign up page:
     1. User signs up with unique username and password 
     2. Form accepts and redirects to my recipes page
 
-3. User log out :
+7. User log out:
     1. On successful login.
     2. Nav bar now displays 'log out' button on all pages
     3. User clicks 'log out' button
     4. User is logged out and redirected to login page
 
-4. Create Recipe :
+8. Create Recipe:
     1. Logged in user clicks link 'Create Recipe' 
     2. Page redirects to Create Recipe form
     3. Dropdown field 'Category Select' populates with MongoDB categories
     4. Fields 'Recipe Name, Ingredients, Prep and Cook Instructions' highlight when clicked on
     5. Dropdown fields 'Prep & Cook Time' populate with list of timing options
-    
+
+9. Create Recipe:
     1. Attempt to submit without all of the fields selected
     2. 'Please fill in this field' flashes up for inputs that are required
 
+10. Create Recipe:
     1. User fills in all of the required inputs
     2. User clicks submit 
     3. Recipe is inserted to MongoDB under that username
     4. Page redirects to disply all saved recipes 
     
-5. Edit Recipe :
+11. Edit Recipe:
     1. From the My Recipes page, user scrolls to individual recipe and clicks edit icon
     2. Page redirects to the pre-filled in create form with requested recipe displayed for editing
     3. User edits any or all of the fields
     4. User clicks the form submit button
     5. On submission, user gets redirected back to all recipes with the updated recipe displayed. 
 
+12. Edit Recipe:
     1. User tries to resubmit the recipe with blank fields 
     2. 'Please fill in this field' flashes up to stop blank submission
 
-6.  Search Category :
+13. Search Category:
     1. User clicks on the search category nav link 
     2. Redirects to the search page
     3. 6 buttons representing each category are displayed
@@ -201,7 +208,7 @@ This project was deployed using Heroku and can found [here](https://recipestorem
 - Category Icons can be found at [Flat Icon](https://www.flaticon.com/)
 
 ### Acknowledgements
-- Masonary CSS/JS layout copied from [StackOverflow](https://stackoverflow.com/questions/43917346/masonry-layout-with-css-grid)
+- Masonary CSS/JS layout copied from AndyBareFoot on [CodePen](https://codepen.io/andybarefoot/pen/QMeZda)
 - Additional Flask learning from Pretty Printed's YouTube video 'Creating a User Login System Using Python, Flask and MongoDB [YouTube](https://www.youtube.com/watch?v=vVx1737auSE)
 - I received inspiration for this project from [Pinterest](https://www.pinterest.co.uk/pilchy1983/developer-ideas/). 
 - Code debugging help from my mentor Adegbenga Adeye
