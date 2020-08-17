@@ -109,9 +109,10 @@ form {
 h1 {
     font-size: 3.2rem;
 }
-}
+
 /* Resize Columns on S & M Screens */
 .grid-sizer,
 .grid-item {
   width: 100%;
+}
 }
