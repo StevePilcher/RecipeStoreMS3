@@ -113,6 +113,6 @@ h1 {
 /* Resize Columns on S & M Screens */
 .grid-sizer,
 .grid-item {
-  width: 100%;
+  width: 95%;
 }
 }
