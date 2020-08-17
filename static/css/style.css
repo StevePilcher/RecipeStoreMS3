@@ -3,8 +3,12 @@
 /* Background Colours & General */
 html {
     font-family: Recursive, sans-serif;
+    background-image: url('../images/background.jpg');
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(17, 99, 172) 19%, rgba(32,156,238,1) 90%); 
+    background-size: cover;
 }
 
 h1 {
@@ -58,8 +62,8 @@ form {
 /* Card Changes for masonry alignment */
 
 .card .card-content {
-    padding: 15px;
     border-radius: 0 0 2px 2px;
+    padding: 10px 10px 0px 10px;;
 }
 .card .card-content .card-title {
     display: block;
@@ -70,12 +74,43 @@ form {
 .category-button {
     min-width: 166px;
 }
+
+.card .card-action {
+    padding: 5px;
+}
+/*
 .grid {
   display: grid;
-  grid-gap: 50px;
+  grid-gap: 25px;
   grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
   grid-auto-rows: 100px;
 }
+*/ 
+.grid {
+  max-width: 1200px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+  width: 280px;
+  /* vertical gutter */
+  margin-bottom: 25px;
+}
+
+
+
+
+
+
+/* Media Query */
 
 @media only screen and (max-width: 600px) {
 

@@ -21,5 +21,14 @@ $(".category_icon").each(function(index) {
             $(this).replaceWith('<img class="recipecat" src="./static/images/baking.png"></img>');
         } 
 });
+        $('.grid').masonry({
+  itemSelector: '.grid-item',
+  gutter: 10
+});
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+});
+
 });
 
