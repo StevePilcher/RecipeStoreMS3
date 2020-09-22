@@ -4,8 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
-from flask import Flask, render_template
-redirect, request, session, url_for, flash, redirect
+from flask import Flask, render_template, redirect
+from flask import request, session, url_for, flash, redirect
 if os.path.exists("env.py"):
     import env
 
