@@ -13,6 +13,10 @@ html {
 
 nav .brand-logo {
     font-size: 1.5rem;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 15px;
 }
 
 h1 {
