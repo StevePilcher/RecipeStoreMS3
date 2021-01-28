@@ -69,8 +69,9 @@ def signup():
             users.insert_one(
                 {'name': request.form['username'], 'password': hashpass})
             session['username'] = request.form['username']
-            user_id = session['userid']
-            return redirect(url_for('create_recipe'))
+            return render_template(
+                'login.html', message=flash(
+                    'Your user account {} has been created, please login!'.format(request.form['username'])))
 
         return render_template(
             'signup.html', message=flash(
@@ -195,4 +196,4 @@ if __name__ == '__main__':
     app.secret_key = os.environ.get("secret_key")
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=False)
+            debug=True)
