@@ -7,7 +7,8 @@
             <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
                 <div class="row">
                     <div class="input-field col s6">
-                        <select class="is-hovered" id="category_name" name="category_name" required>
+                        <select class="is-hovered" id="category_name" name="category_name"
+                        size="5" required>
                             <option>Recipe Category</option>
                             {% for cat in categories %}
                             {% if cat.category_name == recipe.category_name%}
@@ -42,7 +43,6 @@
                         <textarea
                         id="preptextarea" 
                         class="materialize-textarea"
-                        id="preparation_instructions"
                         name="preparation_instructions"
                         placeholder="Prepartion Instructions" 
                         required >{{recipe.preparation_instructions }}
@@ -55,8 +55,7 @@
                     <div class="input-field col s12">
                         <textarea
                         id="cooktextarea" 
-                        class="materialize-textarea"
-                        id="cooking_instructions" 
+                        class="materialize-textarea" 
                         name="cooking_instructions"
                         placeholder="Cooking Instructions"
                         required>{{ recipe.cooking_instructions }}
@@ -68,8 +67,8 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="prep_time"
-                        name="prep_time" required>
-                            <option value="{{recipe.prep_time}}" selected></option>
+                        name="prep_time"
+                        size="24" required>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>
@@ -99,8 +98,8 @@
                     </div>
                     <div class="input-field col s6">
                         <select id="cook_time"
-                        name="cook_time" required>
-                            <option value="{{recipe.cook_time}}" selected></option>
+                        name="cook_time"
+                        size="24" required>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>

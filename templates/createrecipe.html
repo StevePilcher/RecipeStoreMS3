@@ -9,10 +9,10 @@
                     <div class="input-field col s6">
                         <select
                         id="category_name" 
-                        name="category_name" 
+                        name="category_name"
+                        size="6" 
                         required>
 <!-- Display category fields on Mongo and display in a dropdown list -->        
-                        <option selected>Recipe Category</option>
                         {% for cat in categories %}
                         <option value="{{cat.category_name}}">
                             {{cat.category_name}}
@@ -49,9 +49,8 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <textarea 
-                        id="preptextarea" 
-                        class="materialize-textarea"
-                        id="preparation_instructions"
+                        id= "preptextarea" 
+                        class= "materialize-textarea"
                         name="preparation_instructions"
                         placeholder="Prepartion Instructions" 
                         required >
@@ -64,8 +63,7 @@
                     <div class="input-field col s12">
                         <textarea
                         id="cooktextarea" 
-                        class="materialize-textarea"
-                        id="cooking_instructions" 
+                        class="materialize-textarea" 
                         name="cooking_instructions"
                         placeholder="Cooking Instructions"
                         required>
@@ -77,8 +75,9 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="prep_time"
-                        name="prep_time" required>
-                            <option disabled selected>Minutes</option>
+                        name="prep_time"
+                        size="24" 
+                        required>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>
@@ -108,8 +107,9 @@
                     </div>
                     <div class="input-field col s6">
                         <select id="cook_time"
-                        name="cook_time" required>
-                            <option disabled selected>Minutes</option>
+                        name="cook_time"
+                        size="24"
+                        required>
                             <option value="5">5 mins</option>
                             <option value="10">10 mins</option>
                             <option value="15">15 mins</option>

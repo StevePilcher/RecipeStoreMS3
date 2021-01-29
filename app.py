@@ -6,6 +6,7 @@ from bson.objectid import ObjectId
 from flask_wtf import FlaskForm
 from flask import Flask, render_template, redirect
 from flask import request, session, url_for, flash, redirect
+
 if os.path.exists("env.py"):
     import env
 
@@ -42,8 +43,8 @@ def login():
 
     return render_template(
         'login.html', message=flash(
-            'The username {} does not exist!'.format(
-                request.form["username"], title='Home')))
+            'The username {} does not exist!'
+            .format(request.form["username"], title='Home')))
 
 # Logout route to pop user from session
 
@@ -71,11 +72,15 @@ def signup():
             session['username'] = request.form['username']
             return render_template(
                 'login.html', message=flash(
-                    'Your user account {} has been created, please login!'.format(request.form['username'])))
+                    'Your user account {} '
+                    'has been created, please login!'
+                    .format(request.form['username'])))
 
         return render_template(
             'signup.html', message=flash(
-                'The username {} already exists!'.format(
+                'The username {} already exists! '
+                'Create a different username or '
+                'Log in!'.format(
                     request.form["username"])))
 
     return render_template('signup.html')
