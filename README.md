@@ -12,7 +12,7 @@ To showcase the app, a test user has been created with multiple recipes. Sign in
 
 Username: Steve
 Password: ABC 
-*The login details are case sensitive
+*The login details are case sensitive*
 
 ## UX
  
