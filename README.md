@@ -218,7 +218,7 @@ If you have a GitHub account move to step 1. If not, firstly go to [GitHub](http
 5. Choose public or private
 6. Click the green **Create repository from template** button
 
-## MongoDB
+### MongoDB
 
 If you have a MongoDB account move to step 1. If not, firstly go to 
 [MongoDB](https://www.mongodb.com/cloud/atlas/register) Now follow these steps to setup your DB with Mongo. 
