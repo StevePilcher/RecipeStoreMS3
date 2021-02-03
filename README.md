@@ -8,10 +8,14 @@ This project was created for my Milestone 3 project for the Code Institute's Ful
 The app I created is a single page site. I chose to create an online recipes store app which allows a user to be able to have an individual account for creating, editing and storing their own recipes. 
 
 ## Test User
-To showcase the app, a test user has been created with multiple recipes. Sign in with these credentials;
+To showcase the app, a test user has been created with multiple recipes. 
+
+Sign in with these credentials;
 
 Username: Steve
+
 Password: ABC 
+
 *The login details are case sensitive*
 
 ## UX
