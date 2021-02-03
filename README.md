@@ -73,6 +73,10 @@ The linked file to the wireframe mockup of the website.
 
 3. Improved editing recipe features when in smaller screen sizes. Breadcrumbing each field as it's edited would be a better UX. This would require a complete overhaul of the current form submission function. 
 
+4. Signup redirect is not very user friendly, taking you back to the login page. An improvement should be signing up and being logged in to the create recipe page. 
+
+5. Adding the ability to clone someone else's recipe to your own collection.
+
 ## Technologies Used
 
 The following technologies were used;
@@ -113,12 +117,12 @@ Chrome Dev tools were used to simulate the following devices for testing;
 
 ### W3C Markup Validator 
 
-- 3 Warnings, 2 for lack of heading element used on sections (I feel headings are not required for UX), 1 for an h1 being used. 
+HTML was firstly parsed through Google chrome browser before running the HTML through W3C Validator. No Errors were found however warnings relating to headings were encountered on pages. This [Document](https://github.com/StevePilcher/RecipeStoreMS3/blob/master/static/files/RecipeStoreHTMLValidation.pdf) explains all of the warnings and reasons them to be ignored.
 
 ### W3C CSS Validator 
 
-- No errors or warnings were found on style.css
-- 1 error associated with Materialize's minified css
+- No errors were found on style.css
+- 1 warning was found referring to Imported style sheets that are not checked in direct input and file upload modes. It can be ignored 
 
 ### JSHint
 
@@ -201,7 +205,7 @@ The following scenarios were manually tested;
 
 ## Deployment 
 
-To copy and deploy this project follow the 3 steps below. 
+To copy and deploy this project follow the 3 main platform steps below. 
 
 ### GitHub
 
