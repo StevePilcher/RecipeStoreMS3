@@ -280,8 +280,8 @@ If you already have created an Heroku account move on to step 1, if not create a
 |---|---|
 | IP | 0.0.0.0 |
 |PORT|8080|
-|MONGO_DBNAME|*Your MongoDB Name that you created in step 4.4 of*|
-|MONGO_URI|*Your MongoDB URI*|
+|MONGO_DBNAME|*Your MongoDB Name that you created in step 4.iv of the MongoDB*|
+|MONGO_URI|*Your MongoDB URI that you popluated and edited in step 5.iv of MongoDB*|
 |secret_key|*Your Secret Key set in your env.py file*|
 
 Your recipe app can now be launched by clicking the **Open App** button.
