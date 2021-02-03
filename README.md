@@ -7,7 +7,7 @@ This project was created for my Milestone 3 project for the Code Institute's Ful
 
 The app I created is a single page site. I chose to create an online recipes store app which allows a user to be able to have an individual account for creating, editing and storing their own recipes. 
 
-## Test User 
+## Test User
 To showcase the app, a test user has been created with multiple recipes. Sign in with these credentials;
 
 Username: Steve
@@ -156,7 +156,7 @@ The following scenarios were manually tested;
     
 6. Sign up page:
     1. User signs up with unique username and password 
-    2. Form accepts and redirects to my recipes page
+    2. Form accepts and redirects to login page
 
 7. User log out:
     1. On successful login.
@@ -199,9 +199,90 @@ The following scenarios were manually tested;
     4. User clicks on a button and page refreshes with any recipes the user owns in the particular category
     5. User clicks an alternate category button and page refreshes with new recipes. 
 
-## Deployment
+## Deployment 
 
-This project was deployed using Heroku and can found [here](https://recipestoremongo.herokuapp.com/). This version was off of the master branch from GitHub [here](https://github.com/StevePilcher/RecipeStoreMS3), there are no differences between the deployed and deployment versions. 
+To copy and deploy this project follow the 3 steps below. 
+
+### GitHub
+
+This version was off of the master branch from GitHub [here](https://github.com/StevePilcher/RecipeStoreMS3), there are no differences between the deployed and deployment versions. 
+
+#### Cloning this Project
+
+If you have a GitHub account move to step 1. If not, firstly go to [GitHub](https://github.com/) and create an account. Verify as requested and now follow the below steps to clone this repository; 
+
+1. Follow the [link](https://github.com/StevePilcher/RecipeStoreMS3)
+2. Click the **'Use this template'** button
+3. User will be redirected to a create repository from template page
+4. Fill in the name of the repository you want to create
+5. Choose public or private
+6. Click the green **Create repository from template** button
+
+## MongoDB
+
+If you have a MongoDB account move to step 1. If not, firstly go to 
+[MongoDB](https://www.mongodb.com/cloud/atlas/register) Now follow these steps to setup your DB with Mongo. 
+
+1. Follow the link to login to [MongoDB](https://account.mongodb.com/account/login) 
+    1. Click **Create** a Shared cluster for free
+    2. By default AWS will be highlighted. Choose your closest region
+    4. Next choose the M0 cluster tier. *This is Free forever* 
+    5. Scroll to bottom and select the Cluster name, you can leave it default 
+    6. Click **Create Cluster** button. *This can take some minutes*
+
+
+2. Under securities, click **Database Access**
+    1. Click **Add New Database User** 
+    2. Enter a new **Username** and **Password**
+    3. Set Database User priviledges to **Read and Write to any Database**, click accept
+
+3. Under securities, click **Network Access**
+    1. Click the **Add IP Address** button
+    2. Select the option **Add access from anywhere** *this will populate the IP 0.0.0.0/0* and click **Confirm**
+
+4. Under Data Stroage click **Clusters** 
+    1. You Cluster should be provisioned, if not wait a few more mins. 
+    2. Once provisioned, click the **collections** button
+    3. Click the button **Add my own data** *This is where you create your recipe DB* 
+    4. Add a name to your DB *eg MyRecipeDB*
+    5. Add a name to your collection *eg Recipes* and **create**
+
+5. Click the far right option heading **Command Line Tools** 
+    1. Under the option **Connect to your Cluster** click the **Connect Instructions** button
+    2. Choose **Connect your Applicaton** 
+    3. Select the dropdown **Python** and the version **3.6 or higher**
+    4. You will now have a the **MONGO_URI**, you will need this later when you deploy your app. To connect to your recipe DB remember, replace <password> with the password for the root user. Replace <dbname> with the name of the database that connections will use by default.
+
+You are now ready to setup the 3rd and final part of deploying the Recipe store project.
+
+### Heroku
+
+This project was deployed using Heroku and can found [here](https://recipestoremongo.herokuapp.com/). 
+
+#### Deploying to Heroku
+
+To deploy the project on Heroku yourself, follow these steps. 
+
+If you already have created an Heroku account move on to step 1, if not create an account by following this [link](https://signup.heroku.com/). Verify as requested and once complete, move on to step 1.
+
+1. Login to your [Heroku](https://id.heroku.com/login) account
+2. Click the button **New** , with further dropdown **create new app**
+3. Create the app with a unique name and selecting the region, Europe or USA, click the **Create App** button
+4. Click the **Deploy** tab 
+5. The Deployment Method can be connected to GitHub. Click and follow the steps below to connect your new repository to Heroku. This will keep the deployed version updated with every commit to the branch in Github.  
+6. Click the **Settings** tab
+7. Scroll down and click **Reveal Config Vars** 
+8. This settings menu allows you to set your secret keys and other sensitive info so it's hidden from public view
+9. Config Vars should be entered for the following; 
+
+| IP | 0.0.0.0 |
+|PORT|8080|
+|MONGO_DBNAME|*Your MongoDB Name that you created in step 4.4 of*|
+|MONGO_URI|*Your MongoDB URI*|
+|secret_key|*Your Secret Key set in your env.py file*|
+
+Your recipe app can now be launched by clicking the **Open App** button.
+
 
 ## Credits
 
