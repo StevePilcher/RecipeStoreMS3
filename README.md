@@ -275,6 +275,9 @@ If you already have created an Heroku account move on to step 1, if not create a
 8. This settings menu allows you to set your secret keys and other sensitive info so it's hidden from public view
 9. Config Vars should be entered for the following; 
 
+
+| Key  | Value  |
+|---|---|
 | IP | 0.0.0.0 |
 |PORT|8080|
 |MONGO_DBNAME|*Your MongoDB Name that you created in step 4.4 of*|
